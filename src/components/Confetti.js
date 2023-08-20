@@ -4,7 +4,7 @@ import Confetti from 'react-confetti';
 import useSound from 'use-sound';
 import sound from '../../public/sounds/1.mp3';
 
-export default () => {
+export default function AppConfetti({ }) {
   const [play, { stop }] = useSound(sound);
 
   useEffect(() => {
