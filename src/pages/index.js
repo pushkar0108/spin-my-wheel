@@ -61,14 +61,14 @@ class Home extends React.Component {
     return (
       <Layout>
         <Grid container spacing={2} justifyContent="center">
-          <Grid item xs={8} md={5}>
+          <Grid item xs={12} md={6}>
             <WheelComponent
               segments={segments}
               segColors={segColors}
               onFinished={this.addResult}
             />
           </Grid>
-          <Grid item xs={4} md={5}>
+          <Grid item xs={10} md={5}>
             <BasicTabs 
               segments={segments}
               setSegments={this.setSegments}

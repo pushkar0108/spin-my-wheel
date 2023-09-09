@@ -1,10 +1,16 @@
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import Image from 'next/image';
 import Link from '@mui/material/Link';
+
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import TwitterIcon from '@mui/icons-material/Twitter';
 
 const NavigationList = ({ title, list }) => {
   return (
@@ -44,6 +50,12 @@ function Footer() {
               <Typography sx={{ mb: 1.5 }} variant="caption" color="text.secondary">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
               </Typography>
+              <Box sx={{ mt: 1.5 }}>
+                <InstagramIcon sx={{ mr: 1 }} />
+                <FacebookIcon sx={{ mr: 1 }} />
+                <LinkedInIcon sx={{ mr: 1 }} />
+                <TwitterIcon sx={{ mr: 1 }} />
+              </Box>
             </div>
           </Grid>
           <Grid item xs={12} md={3}>

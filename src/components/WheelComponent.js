@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Box from '@mui/material/Box';
 import WheelComponent from 'react-wheel-of-prizes';
 
 import useSound from 'use-sound';
@@ -14,8 +15,12 @@ export default function Wheel({ segments, segColors, onFinished }) {
   }, [segments, segColors]);
 
   return (
-    <div
-    style={{margin: "auto", height: "500px"}}
+    <Box
+    className="margin-auto"
+    sx={{
+      height: 600,
+      overflow: { xs: 'scroll', md: 'hidden' }
+    }}
     onClick={() => {
       play();
       setTimeout(stop, 2000);
@@ -35,6 +40,6 @@ export default function Wheel({ segments, segColors, onFinished }) {
         downDuration={300}
         fontFamily='Arial'
       />
-    </div>
+    </Box>
   )
 }
