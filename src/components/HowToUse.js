@@ -38,21 +38,21 @@ export default function HowToUse({ }) {
                     <Component
                         index={1}
                         title="Add slices"
-                        subTitle="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard text"
+                        subTitle="You have the flexibility to add up to 30 slices to the wheel. You can either manually input your entries in the adjacent box or import a list all at once."
                     />
                 </Grid>
                 <Grid item xs={12} md={4}>
                     <Component
                         index={2}
-                        title="Configure"
-                        subTitle="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard text"
+                        title="Customize"
+                        subTitle="Customize the wheel to your preferences. You can configure themes, sounds, speed, and duration—all adjustable through the settings menu!"
                     />
                 </Grid>
                 <Grid item xs={12} md={4}>
                     <Component
                         index={3}
-                        title="Play"
-                        subTitle="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard text"
+                        title="Spin"
+                        subTitle="Click the Spin button to set the wheel in motion. It will come to a stop on one random slice selected by our algorithm."
                     />
                 </Grid>
             </Grid>

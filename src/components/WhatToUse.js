@@ -44,7 +44,7 @@ const items = [
         subTitle: "Make a wheel for the classic party game Truth or Dare. The wheel decides if the next player should say a truth, or do a dare."
     },
     {
-        title: "Help fix arguments",
+        title: "Help make a decision",
         subTitle: "Create a Yes or No wheel that will help you make decisions faster."
     },
 ]
