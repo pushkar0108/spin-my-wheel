@@ -48,7 +48,8 @@ function Footer() {
                 alt="Picture of the author"
               />
               <Typography sx={{ mb: 1.5 }} variant="caption" color="text.secondary">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Let's give the wheel a Spin! <br/>
+                Happy Spinning!
               </Typography>
               <Box sx={{ mt: 1.5 }}>
                 <InstagramIcon sx={{ mr: 1 }} />
@@ -76,6 +77,7 @@ function Footer() {
               list={[
                 "About us",
                 "Our terms",
+                "FAQs",
               ]}
             />
           </Grid>
