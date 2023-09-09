@@ -38,7 +38,7 @@ function Footer() {
     <AppBar position="static" color="primary">
       <Container maxWidth="lg">
         <Grid container justifyContent="space-evenly">
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={4}>
             <div className="m-4">
               <Image
                 className="mr-4"
@@ -58,7 +58,7 @@ function Footer() {
               </Box>
             </div>
           </Grid>
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={4}>
             <NavigationList 
               title="Ready-made wheels"
               list={[
@@ -70,27 +70,12 @@ function Footer() {
               ]}
             />
           </Grid>
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={4}>
             <NavigationList 
               title="Explore Community"
               list={[
-                "Go pro",
-                "Latest updates",
                 "About us",
-                "This site",
-                "Contact Us",
-              ]}
-            />
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <NavigationList 
-              title="Insight Community"
-              list={[
-                "Global partners",
-                "Virtual World",
-                "Community",
-                "Brand Assets",
-                "Forum",
+                "Our terms",
               ]}
             />
           </Grid>
