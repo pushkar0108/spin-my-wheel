@@ -6,18 +6,8 @@ import BasicTabs from '../components/BasicTabs';
 import Confetti from '../components/Confetti';
 import HowToUse from '../components/HowToUse';
 import WhatToUse from '../components/WhatToUse';
-import "../app/globals.css";
 
-const segColors = [
-  '#EE4040',
-  '#F0CF50',
-  '#815CD1',
-  '#3DA5E0',
-  '#34A24F',
-  '#F9AA1F',
-  '#EC3F3F',
-  '#FF9000'
-];
+import "../app/globals.css";
 
 class Home extends React.Component {
   constructor(props) {
@@ -34,6 +24,7 @@ class Home extends React.Component {
         ['better luck next time', true],
         ['won a voucher', true],
       ],
+      selectedPalette: 7,
       results: [],
       showConfetti: false
     }
@@ -41,6 +32,10 @@ class Home extends React.Component {
   
   setSegments = (segments) => {
     this.setState({ segments });
+  }
+
+  setSelectedPalette = (selectedPalette) => {
+    this.setState({ selectedPalette });
   }
 
   addResult = (result) => {
@@ -57,14 +52,14 @@ class Home extends React.Component {
   }
 
   render() {
-    const {segments, results, showConfetti} = this.state;
+    const {segments, selectedPalette, results, showConfetti} = this.state;
     return (
       <Layout>
         <Grid container spacing={2} justifyContent="center">
           <Grid item xs={12} md={6}>
             <WheelComponent
               segments={segments}
-              segColors={segColors}
+              selectedPalette={selectedPalette}
               onFinished={this.addResult}
             />
           </Grid>
@@ -72,6 +67,8 @@ class Home extends React.Component {
             <BasicTabs 
               segments={segments}
               setSegments={this.setSegments}
+              selectedPalette={selectedPalette}
+              setSelectedPalette={this.setSelectedPalette}
               results={results}
             />
           </Grid>

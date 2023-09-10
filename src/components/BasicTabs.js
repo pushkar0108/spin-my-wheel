@@ -9,6 +9,7 @@ import List from "./List";
 import Paper from '@mui/material/Paper';
 import SettingsIcon from '@mui/icons-material/Settings';
 import Modal from './Modal';
+import ConfigurationPanel from "./ConfigurationPanel";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -38,7 +39,7 @@ function a11yProps(index) {
 }
 
 export default function BasicTabs({
-  segments, setSegments, results
+  segments, setSegments, selectedPalette, setSelectedPalette, results
 }) {
   const [value, setValue] = React.useState(0);
   const [openModal, setOpenModal] = React.useState(false);
@@ -97,12 +98,10 @@ export default function BasicTabs({
         isOpen={openModal}
         handleModalClose={handleModalClose}
       >
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          Text in a modal
-        </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-        </Typography>
+        <ConfigurationPanel 
+          selectedPalette={selectedPalette}
+          setSelectedPalette={setSelectedPalette}
+        />
       </Modal>
     </Paper>
 
