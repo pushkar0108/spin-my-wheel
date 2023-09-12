@@ -21,7 +21,7 @@ export default function Palette({ colors, selected }) {
               background: color,
               flexGrow: 1,
               flexBasis: 0,
-            }}></Box>
+            }} key={color}></Box>
           })
         }
       </Box>

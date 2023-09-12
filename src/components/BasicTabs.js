@@ -90,7 +90,7 @@ export default function BasicTabs({
         <CustomTabPanel value={value} index={1}>
           {
             !results.length ?
-            <div>No results found. Let's give the wheel a Spin!</div> :
+            <div>No results found. Let&apos;s give the wheel a Spin!</div> :
             results.map((result, i) => <div key={result + i}>{result}</div>)
           }
         </CustomTabPanel>

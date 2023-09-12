@@ -48,7 +48,7 @@ function Footer() {
                 alt="Picture of the author"
               />
               <Typography sx={{ mb: 1.5 }} variant="caption" color="text.secondary">
-                Let's give the wheel a Spin! <br/>
+                Let&apos;s give the wheel a Spin! <br/>
                 Happy Spinning!
               </Typography>
               <Box sx={{ mt: 1.5 }}>
