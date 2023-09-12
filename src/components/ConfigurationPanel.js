@@ -9,12 +9,14 @@ import Stack from '@mui/material/Stack';
 import Slider from '@mui/material/Slider';
 import VolumeDown from '@mui/icons-material/VolumeDown';
 import VolumeUp from '@mui/icons-material/VolumeUp';
+import SoundSelector from './SoundSelector';
 
-const ContinuousSlider = ({ leftIcon, rightIcon }) => {
+const ContinuousSlider = ({ leftIcon, rightIcon, onChangeHandler }) => {
   const [value, setValue] = React.useState(30);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    onChangeHandler && onChangeHandler(newValue);
   };
 
   return (
@@ -29,7 +31,7 @@ const ContinuousSlider = ({ leftIcon, rightIcon }) => {
 }
 
 export default function ConfigurationPanel({ 
-  colors, selectedPalette, setSelectedPalette 
+  colors, selectedPalette, setAppState, spinningSpeed
 }) {
   return (
     <Grid container spacing={2}>
@@ -52,24 +54,29 @@ export default function ConfigurationPanel({
         </Typography>
         <PaletteSelector
             selectedPalette={selectedPalette}
-            setSelectedPalette={setSelectedPalette} />
+            setAppState={setAppState} />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12}>
         <Typography sx={{ mt: 2, mb: 1.5 }} variant="h7" component="div">
-          Spinning Time
+          Spinning Speed (This will increase speed time as well)
         </Typography>
-        <ContinuousSlider />
-      </Grid>
-      <Grid item xs={6}>
-        <Typography sx={{ mt: 2, mb: 1.5 }} variant="h7" component="div">
-          Spinning Speed
-        </Typography>
-        <ContinuousSlider />
+        <Slider
+          aria-label="Spinning-Time"
+          min={100}
+          max={1000}
+          value={spinningSpeed}
+          onChange={(event, newValue) => {
+            setAppState({
+              spinningSpeed: newValue
+            })
+          }}
+        />
       </Grid>
       <Grid item xs={12}>
         <Typography sx={{ mt: 2, mb: 1.5 }} variant="h7" component="div">
           Spining Sound
         </Typography>
+        <SoundSelector />
         <ContinuousSlider 
           leftIcon={<VolumeDown />}
           rightIcon={<VolumeUp />}

@@ -4,7 +4,7 @@ import Palette from './Palette';
 import { PALETTES } from '../config/constants';
 
 export default function PaletteSelector({ 
-  selectedPalette, setSelectedPalette 
+  selectedPalette, setAppState 
 }) {
   return (
     <Box sx={{ display: 'flex', flexWrap: "wrap" }}>
@@ -13,7 +13,7 @@ export default function PaletteSelector({
           return (
             <Box
               key={index} 
-              onClick={() => setSelectedPalette(index)}>
+              onClick={() => setAppState({ selectedPalette: index })}>
               <Palette 
                 selected={selectedPalette == index}
                 colors={option}

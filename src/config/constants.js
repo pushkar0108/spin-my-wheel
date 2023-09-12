@@ -11,3 +11,15 @@ export const PALETTES = [
   ["#17BEBB", "#D4F4DD", "#D62246", "#4B1D3F"],
   ["#5FAD56", "#F2C14E", "#F78154", "#B4436C"],
 ];
+
+export const DEFAULT_SEGMENTS = [
+  ['better luck next time', true],
+  ['won 70', true],
+  ['won 10', true],
+  ['better luck next time', true],
+  ['won 2', true],
+  ['won uber pass', true],
+  ['better luck next time', true],
+  ['won a voucher', true]
+];
+

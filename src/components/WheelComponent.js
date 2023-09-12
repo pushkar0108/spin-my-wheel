@@ -19,7 +19,9 @@ const getSegColors = ({selectedPalette, segCount}) => {
   return arr;
 };
 
-export default function Wheel({ segments, selectedPalette, onFinished }) {
+export default function Wheel({ 
+  segments, selectedPalette, onFinished, spinningSpeed
+}) {
   const [key, setKey] = useState("");
   const [play, { stop }] = useSound(sound);
   const visibleSegments = segments.filter(segment => segment[1]);
@@ -27,7 +29,7 @@ export default function Wheel({ segments, selectedPalette, onFinished }) {
   // This is added because "react-wheel-of-prizes" doesn't re-render on prop change, so we use key to re-render is forcefully
   useEffect(() => {
     setKey(Math.random(200));
-  }, [segments, selectedPalette]);
+  }, [segments, selectedPalette, spinningSpeed]);
 
   return (
     <Box
@@ -57,7 +59,7 @@ export default function Wheel({ segments, selectedPalette, onFinished }) {
         isOnlyOnce={false}
         size={210}
         upDuration={100}
-        downDuration={300}
+        downDuration={spinningSpeed}
         fontFamily='Arial'
       />
     </Box>

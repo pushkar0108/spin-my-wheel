@@ -6,34 +6,26 @@ import BasicTabs from '../components/BasicTabs';
 import Confetti from '../components/Confetti';
 import HowToUse from '../components/HowToUse';
 import WhatToUse from '../components/WhatToUse';
+import { DEFAULT_SEGMENTS } from '../config/constants';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      segments: [
-        ['better luck next time', true],
-        ['won 70', true],
-        ['won 10', true],
-        ['better luck next time', true],
-        ['won 2', true],
-        ['won uber pass', true],
-        ['better luck next time', true],
-        ['won a voucher', true],
-      ],
+      segments: DEFAULT_SEGMENTS,
       selectedPalette: 7,
+      showConfetti: false,
       results: [],
-      showConfetti: false
+
+      spinningSpeed: 300,
+      spinningSound: '',
+      winningSound: '',
     }
   }
-  
-  setSegments = (segments) => {
-    this.setState({ segments });
-  }
 
-  setSelectedPalette = (selectedPalette) => {
-    this.setState({ selectedPalette });
+  setAppState = (state) => {
+    this.setState(state);
   }
 
   addResult = (result) => {
@@ -50,7 +42,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const {segments, selectedPalette, results, showConfetti} = this.state;
+    const {segments, spinningSpeed, selectedPalette, results, showConfetti} = this.state;
     return (
       <Layout>
         <Grid container spacing={2} justifyContent="center">
@@ -58,15 +50,16 @@ class Home extends React.Component {
             <WheelComponent
               segments={segments}
               selectedPalette={selectedPalette}
+              spinningSpeed={spinningSpeed}
               onFinished={this.addResult}
             />
           </Grid>
           <Grid item xs={10} md={5}>
             <BasicTabs 
+              spinningSpeed={spinningSpeed}
               segments={segments}
-              setSegments={this.setSegments}
+              setAppState={this.setAppState}
               selectedPalette={selectedPalette}
-              setSelectedPalette={this.setSelectedPalette}
               results={results}
             />
           </Grid>

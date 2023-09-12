@@ -39,7 +39,7 @@ function a11yProps(index) {
 }
 
 export default function BasicTabs({
-  segments, setSegments, selectedPalette, setSelectedPalette, results
+  segments, setAppState, selectedPalette, results, spinningSpeed
 }) {
   const [value, setValue] = React.useState(0);
   const [openModal, setOpenModal] = React.useState(false);
@@ -84,11 +84,13 @@ export default function BasicTabs({
         <CustomTabPanel value={value} index={0}>
           <List
             segments={segments}
-            setSegments={setSegments}
+            setAppState={setAppState}
           />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>
           {
+            !results.length ?
+            <div>No results found. Let's give the wheel a Spin!</div> :
             results.map((result, i) => <div key={result + i}>{result}</div>)
           }
         </CustomTabPanel>
@@ -99,8 +101,9 @@ export default function BasicTabs({
         handleModalClose={handleModalClose}
       >
         <ConfigurationPanel 
+          spinningSpeed={spinningSpeed}
           selectedPalette={selectedPalette}
-          setSelectedPalette={setSelectedPalette}
+          setAppState={setAppState}
         />
       </Modal>
     </Paper>

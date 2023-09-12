@@ -21,7 +21,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import SortByAlphaIcon from '@mui/icons-material/SortByAlpha';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 
-const InputComponent = ({ segments, setSegments }) => {
+const InputComponent = ({ segments, setAppState }) => {
     const [input, setInput] = useState("");
 
     return (
@@ -41,10 +41,12 @@ const InputComponent = ({ segments, setSegments }) => {
                     variant="outlined"
                     onClick={() => {
                         if (input) {
-                            setSegments([
-                                [input, true],
-                                ...segments
-                            ]);
+                            setAppState({
+                                segments: [
+                                    [input, true],
+                                    ...segments
+                                ]
+                            });
                             setInput("");
                         }
                     }}
@@ -55,35 +57,46 @@ const InputComponent = ({ segments, setSegments }) => {
 };
 
 export default function SegmentList({
-    segments, setSegments
+    segments, setAppState
 }) {
     const handleDelete = (index) => {
-        setSegments(update(segments, { $splice: [[index, 1]] }));
+        setAppState({
+            segments: update(segments, { $splice: [[index, 1]] })
+        });
     };
 
     const handleVisibility = (index) => {
         const segment = segments[index];
         const [text, visible] = segment;
-
-        setSegments(update(segments, {
-            [index]: { $set: [text, !visible] }
-        }));
+        setAppState({
+            segments: update(segments, {
+                [index]: { $set: [text, !visible] }
+            })
+        });
     };
 
     return (
         <>
             <InputComponent
                 segments={segments}
-                setSegments={setSegments}
+                setAppState={setAppState}
             />
 
             <Stack direction="row" spacing={1} className="m-4">
-                <Chip onClick={() => setSegments(_.sortBy(segments, [0]))}
+                <Chip onClick={() => {
+                    setAppState({
+                        segments: _.sortBy(segments, [0])
+                    });
+                }}
                     icon={<SortByAlphaIcon />} 
                     label="Sort" 
                     variant="outlined"
                 />
-                <Chip onClick={() => setSegments(_.shuffle(segments))}
+                <Chip onClick={() => {
+                    setAppState({
+                        segments: _.shuffle(segments)
+                    });
+                }}
                     icon={<ShuffleIcon />} 
                     label="Shuffle" 
                     variant="outlined" 
