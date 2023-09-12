@@ -7,8 +7,6 @@ import Confetti from '../components/Confetti';
 import HowToUse from '../components/HowToUse';
 import WhatToUse from '../components/WhatToUse';
 
-import "../app/globals.css";
-
 class Home extends React.Component {
   constructor(props) {
     super(props);

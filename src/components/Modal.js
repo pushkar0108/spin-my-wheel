@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
+import Paper from '@mui/material/Paper';
 
 const style = {
   position: 'absolute',
@@ -10,10 +11,7 @@ const style = {
   width: "60vw",
   maxHeight: "80vh",
   overflow: 'scroll',
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
+  p: 4
 };
 
 export default function AppModal({ isOpen, handleModalClose, children }) {
@@ -24,9 +22,9 @@ export default function AppModal({ isOpen, handleModalClose, children }) {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={style}>
+      <Paper elevation={3} sx={style}>
         {children}
-      </Box>
+      </Paper>
     </Modal>
   );
 }
