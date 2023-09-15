@@ -6,9 +6,20 @@ import CardContent from '@mui/material/CardContent';
 
 const Component = ({ index, title, subTitle }) => {
     return (
-        <Card className="m-8 ml-16 mr-16 overflow-visible rounded-2xl">
-            <CardContent className="relative">
-                <Avatar className="absolute m-auto left-0 right-0" sx={{ width: 56, height: 56, top: "-30px" }}>
+        <Card className="m-8 ml-16 mr-16 rounded-2xl" sx={{ 
+            overflow: 'visible' 
+        }}>
+            <CardContent sx={{ position: 'relative' }}>
+                <Avatar 
+                    sx={{ 
+                        width: 56, 
+                        height: 56, 
+                        top: "-30px",
+                        margin: "auto",
+                        position: 'absolute',
+                        left: 0,
+                        right: 0
+                    }}>
                     {index}
                 </Avatar>
                 <Typography sx={{ mt: 2, mb: 1.5 }} variant="h4" component="div" align="center">
@@ -24,7 +35,7 @@ const Component = ({ index, title, subTitle }) => {
 
 export default function HowToUse({ }) {
     return (
-        <Grid container spacing={2} className="mt-16">
+        <Grid container spacing={2} sx={{mt: 4}}>
             <Grid item xs={12}>
                 <Typography variant="h5" component="div" align="center">
                     Spin the wheel to make random choices

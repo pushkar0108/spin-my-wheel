@@ -7,7 +7,7 @@ import Stack from '@mui/material/Stack';
 import Slider from '@mui/material/Slider';
 import VolumeDown from '@mui/icons-material/VolumeDown';
 import VolumeUp from '@mui/icons-material/VolumeUp';
-// import SoundSelector from './SoundSelector';
+import SoundSelector from './SoundSelector';
 
 const ContinuousSlider = ({ leftIcon, rightIcon, onChangeHandler }) => {
   const [value, setValue] = React.useState(30);
@@ -74,7 +74,7 @@ export default function ConfigurationPanel({
         <Typography sx={{ mt: 2, mb: 1.5 }} variant="h7" component="div">
           Spining Sound
         </Typography>
-        {/* <SoundSelector /> */}
+        <SoundSelector />
         <ContinuousSlider 
           leftIcon={<VolumeDown />}
           rightIcon={<VolumeUp />}
@@ -84,6 +84,7 @@ export default function ConfigurationPanel({
         <Typography sx={{ mt: 2, mb: 1.5 }} variant="h7" component="div">
           Winning Sound
         </Typography>
+        <SoundSelector />
         <ContinuousSlider 
           leftIcon={<VolumeDown />}
           rightIcon={<VolumeUp />}
