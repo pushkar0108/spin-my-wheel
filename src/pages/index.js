@@ -14,7 +14,7 @@ class Home extends React.Component {
 
     this.state = {
       segments: DEFAULT_SEGMENTS,
-      selectedPalette: 7,
+      selectedPalette: 0,
       showConfetti: false,
       results: [],
 
