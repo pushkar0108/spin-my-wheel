@@ -16,6 +16,7 @@
     "postcss": "8.4.28",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "spin-wheel": "^4.3.0",
     "tailwindcss": "3.3.3"
   },
   "devDependencies": {
@@ -28,7 +29,6 @@
     "immutability-helper": "^3.1.1",
     "lodash": "^4.17.21",
     "react-confetti": "^6.1.0",
-    "react-wheel-of-prizes": "^1.0.9",
     "url-loader": "^4.1.1",
     "use-sound": "^4.0.1"
   }

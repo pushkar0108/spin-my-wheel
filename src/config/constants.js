@@ -1,4 +1,5 @@
 export const PALETTES = [
+  ['#c7160c', '#fff'],
   ["#FAD900", "#001C2F", "#B0A68F"],
   ["#FF404E", "#012D41", "#1BA5B8", "#DAECF3"],
   ["#C77966", "#2F343B", "#7E827A", "#E3CDA4"],
@@ -13,13 +14,15 @@ export const PALETTES = [
 ];
 
 export const DEFAULT_SEGMENTS = [
-  ['better luck next time', true],
-  ['won 70', true],
-  ['won 10', true],
-  ['better luck next time', true],
-  ['won 2', true],
-  ['won uber pass', true],
-  ['better luck next time', true],
-  ['won a voucher', true]
+  ['Yes', true],
+  ['No', true],
+  ['Yes', true],
+  ['No', true],
+  ['Yes', true],
+  ['No', true],
+  ['Yes', true],
+  ['No', true],
+  ['Yes', true],
+  ['No', true],
 ];
 

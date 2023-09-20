@@ -45,8 +45,8 @@ class Home extends React.Component {
     const {segments, spinningSpeed, selectedPalette, results, showConfetti} = this.state;
     return (
       <Layout>
-        <Grid container spacing={2} justifyContent="center">
-          <Grid item xs={12} md={6}>
+        <Grid container spacing={2} justifyContent="space-around" alignItems="flex-start">
+          <Grid item xs={12} md={5}>
             <WheelComponent
               segments={segments}
               selectedPalette={selectedPalette}
