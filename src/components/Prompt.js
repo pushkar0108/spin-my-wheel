@@ -5,21 +5,21 @@ import Grid from '@mui/material/Grid';
 import LoadingButton from '@mui/lab/LoadingButton';
 import TextField from '@mui/material/TextField';
 
-export default function Prompt({ handleConfig }) {
-  const [isLoading, setIsLoading] = React.useState(false);
+export default function Prompt({ handleConfig, isLoading, setAppState }) {
   const [error, setError] = React.useState(null);
+  
 
   const handleSubmit = async () => {
     try {
-      setIsLoading(true);
+      setAppState({ isLoading: true });
       setError(null);
       const userInput = document.getElementById("user-prompt");
       const config = await getConfig(userInput.value);
       handleConfig(config);
-      setIsLoading(false);
+      setAppState({ isLoading: false });
     } catch (error) {
-      setIsLoading(false);
-      setError("Something went wrong. Please try again. Error: ", error);
+      setAppState({ isLoading: false });
+      setError("Something went wrong. Please try again later.", error);
       console.log("Error: ", error);
     }
   };

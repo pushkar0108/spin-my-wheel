@@ -7,6 +7,7 @@ import Grid from '@mui/material/Grid';
 import Badge from '@mui/material/Badge';
 import List from "./List";
 import Paper from '@mui/material/Paper';
+import Skeleton from '@mui/material/Skeleton';
 import SettingsIcon from '@mui/icons-material/Settings';
 import Modal from './Modal';
 import ConfigurationPanel from "./ConfigurationPanel";
@@ -39,7 +40,7 @@ function a11yProps(index) {
 }
 
 export default function BasicTabs({
-  segments, setAppState, selectedPalette, results, spinningSpeed
+  segments, setAppState, selectedPalette, results, spinningSpeed, isLoading
 }) {
   const [value, setValue] = React.useState(0);
   const [openModal, setOpenModal] = React.useState(false);
@@ -66,7 +67,9 @@ export default function BasicTabs({
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
             <Tab value={0} {...a11yProps(0)}
               label={
-                <Badge badgeContent={segments.length} color="primary">
+                <Badge
+                  badgeContent={isLoading ? 0 : segments.length} 
+                  color="primary">
                   Inputs &nbsp; &nbsp;
                 </Badge>
               }
@@ -81,10 +84,25 @@ export default function BasicTabs({
           </Tabs>
         </Box>
         <CustomTabPanel value={value} index={0}>
-          <List
-            segments={segments}
-            setAppState={setAppState}
-          />
+          {
+            isLoading ?
+            <>
+              {
+                [1, 2, 3, 4, 5].map(el => {
+                  return (
+                    <Box key={el} sx={{ display: 'flex', padding: 2}}>
+                      <Skeleton animation="wave" variant="circular" width={40} height={40} />
+                      <Skeleton animation="wave" variant="text" sx={{marginLeft: "10px"}} width="80%" />
+                    </Box>
+                  )
+                })
+              }
+            </> :
+            <List
+              segments={segments}
+              setAppState={setAppState}
+            />
+          }
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>
           {
