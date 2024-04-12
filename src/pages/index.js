@@ -6,6 +6,7 @@ import BasicTabs from '../components/BasicTabs';
 import Confetti from '../components/Confetti';
 import HowToUse from '../components/HowToUse';
 import WhatToUse from '../components/WhatToUse';
+import Prompt from '../components/Prompt';
 import { DEFAULT_SEGMENTS } from '../config/constants';
 
 class Home extends React.Component {
@@ -14,6 +15,7 @@ class Home extends React.Component {
 
     this.state = {
       segments: DEFAULT_SEGMENTS,
+      itemBackgroundColors: null,
       selectedPalette: 0,
       showConfetti: false,
       results: [],
@@ -41,20 +43,31 @@ class Home extends React.Component {
     });
   }
 
+  handleGenAIResponse = (config) => {
+    this.setState({
+      segments: config.items.map(item => {
+        return [item.label, true]
+      }),
+      itemBackgroundColors: config.itemBackgroundColors,
+    });
+  }
+
   render() {
-    const {segments, spinningSpeed, selectedPalette, results, showConfetti} = this.state;
+    const {segments, itemBackgroundColors, spinningSpeed, selectedPalette, results, showConfetti} = this.state;
     return (
       <Layout>
         <Grid container spacing={2} justifyContent="space-around" alignItems="flex-start">
           <Grid item xs={12} md={5}>
             <WheelComponent
               segments={segments}
+              itemBackgroundColors={itemBackgroundColors}
               selectedPalette={selectedPalette}
               spinningSpeed={spinningSpeed}
               onFinished={this.addResult}
             />
           </Grid>
           <Grid item xs={10} md={5}>
+            <Prompt handleConfig={this.handleGenAIResponse} />
             <BasicTabs 
               spinningSpeed={spinningSpeed}
               segments={segments}

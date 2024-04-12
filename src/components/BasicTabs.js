@@ -52,7 +52,6 @@ export default function BasicTabs({
 
   return (
     <Paper elevation={3} className="p-4 mt-8">
-
       <Grid container spacing={2}>
         <Grid item xs={8}>
           <div>Spinning Wheel</div>

@@ -19,8 +19,8 @@ const getSegColors = ({ selectedPalette, segCount }) => {
   return arr;
 };
 
-export default function WheelComponentNew({
-  segments, selectedPalette, onFinished, spinningSpeed
+export default function WheelComponent({
+  segments, itemBackgroundColors, selectedPalette, onFinished, spinningSpeed
 }) {
   const [wheel, setWheel] = useState(null);
   const [play, { stop }] = useSound(sound);
@@ -35,7 +35,7 @@ export default function WheelComponentNew({
     itemLabelAlign: 'right',
     itemLabelBaselineOffset: -0.13,
     itemLabelFont: 'Pragati Narrow',
-    itemBackgroundColors: getSegColors({
+    itemBackgroundColors: itemBackgroundColors || getSegColors({
       selectedPalette, 
       segCount: visibleSegments.length
     }),
@@ -78,27 +78,6 @@ export default function WheelComponentNew({
         setTimeout(stop, 4000);
         wheel.spin(props.rotationSpeedMax);
       }}>
-
-{/* -      <WheelComponent
--        key={key}
--        segments={visibleSegments.map(segment => segment[0])}
--        segColors={
--          getSegColors({
--            selectedPalette, 
--            segCount: visibleSegments.length
--          })
--        }
--        // winningSegment='won 10'
--        onFinished={onFinished}
--        primaryColor='black'
--        contrastColor='white'
--        buttonText='Spin'
--        isOnlyOnce={false}
--        size={210}
--        upDuration={100}
--        downDuration={spinningSpeed}
--        fontFamily='Arial'
--      /> */}
 
     </Box>
   )
