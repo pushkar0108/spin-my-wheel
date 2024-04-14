@@ -41,7 +41,7 @@ const ORIGINAL_PROMPT = `
     Reply:
 `;
 
-export default async function getConfig(userInput) {
+export default async function getLLMConfig(userInput) {
     const prompt = ORIGINAL_PROMPT.replace("{{userInput}}", userInput);
     const result = await model.generateContent([prompt]);
     const textResponse = result.response.text();

@@ -1,6 +1,8 @@
-import "../app/globals.css";
 import App from 'next/app';
 import Script from 'next/script';
+
+import "../app/globals.css";
+import ReduxProvider from '../redux/provider';
 
 class MyApp extends App {
   render() {
@@ -24,7 +26,9 @@ class MyApp extends App {
           `,
           }}
         />
-        <Component {...pageProps} key={router.route}/>
+        <ReduxProvider>
+          <Component {...pageProps} key={router.route}/>
+        </ReduxProvider>
       </>
     )
   }

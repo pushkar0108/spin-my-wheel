@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import _ from "lodash";
 import update from 'immutability-helper';
 
@@ -20,8 +21,11 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import SortByAlphaIcon from '@mui/icons-material/SortByAlpha';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
+import { setSegments } from "../redux/features/appSlice";
 
-const InputComponent = ({ segments, setAppState }) => {
+const InputComponent = () => {
+    const dispatch = useDispatch();
+    const { segments } = useSelector((state) => state.app);
     const [input, setInput] = useState("");
 
     return (
@@ -41,12 +45,11 @@ const InputComponent = ({ segments, setAppState }) => {
                     variant="outlined"
                     onClick={() => {
                         if (input) {
-                            setAppState({
-                                segments: [
-                                    [input, true],
-                                    ...segments
-                                ]
-                            });
+                            const updatedSegments = [
+                                [input, true],
+                                ...segments
+                            ];
+                            dispatch(setSegments(updatedSegments));
                             setInput("");
                         }
                     }}
@@ -56,46 +59,39 @@ const InputComponent = ({ segments, setAppState }) => {
     )
 };
 
-export default function SegmentList({
-    segments, setAppState
-}) {
+export default function SegmentList() {
+    const dispatch = useDispatch();
+    const { segments } = useSelector((state) => state.app);
+
     const handleDelete = (index) => {
-        setAppState({
-            segments: update(segments, { $splice: [[index, 1]] })
-        });
+        const updatedSegments = update(segments, { $splice: [[index, 1]] });
+        dispatch(setSegments(updatedSegments));
     };
 
     const handleVisibility = (index) => {
         const segment = segments[index];
         const [text, visible] = segment;
-        setAppState({
-            segments: update(segments, {
-                [index]: { $set: [text, !visible] }
-            })
-        });
+        const updatedSegments = update(segments, {
+            [index]: { $set: [text, !visible] }
+        })
+        dispatch(setSegments(updatedSegments));
     };
 
     return (
         <>
-            <InputComponent
-                segments={segments}
-                setAppState={setAppState}
-            />
-
+            <InputComponent />
             <Stack direction="row" spacing={1} className="m-4">
                 <Chip onClick={() => {
-                    setAppState({
-                        segments: _.sortBy(segments, [0])
-                    });
+                    const updatedSegments = _.sortBy(segments, [0]);
+                    dispatch(setSegments(updatedSegments));
                 }}
                     icon={<SortByAlphaIcon />} 
                     label="Sort" 
                     variant="outlined"
                 />
                 <Chip onClick={() => {
-                    setAppState({
-                        segments: _.shuffle(segments)
-                    });
+                    const updatedSegments = _.shuffle(segments);
+                    dispatch(setSegments(updatedSegments));
                 }}
                     icon={<ShuffleIcon />} 
                     label="Shuffle" 

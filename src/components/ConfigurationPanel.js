@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -8,6 +9,7 @@ import Slider from '@mui/material/Slider';
 import VolumeDown from '@mui/icons-material/VolumeDown';
 import VolumeUp from '@mui/icons-material/VolumeUp';
 import SoundSelector from './SoundSelector';
+import { setSpinningSpeed } from "../redux/features/appSlice";
 
 const ContinuousSlider = ({ leftIcon, rightIcon, onChangeHandler }) => {
   const [value, setValue] = React.useState(30);
@@ -28,9 +30,10 @@ const ContinuousSlider = ({ leftIcon, rightIcon, onChangeHandler }) => {
   );
 }
 
-export default function ConfigurationPanel({ 
-  colors, selectedPalette, setAppState, spinningSpeed
-}) {
+export default function ConfigurationPanel() {
+  const dispatch = useDispatch();
+  const { selectedPalette, spinningSpeed } = useSelector((state) => state.app);
+
   return (
     <Grid container spacing={2}>
       <Grid container item xs={12}>
@@ -50,9 +53,7 @@ export default function ConfigurationPanel({
         <Typography sx={{ mt: 2, mb: 1.5 }} variant="h7" component="div">
           Palette
         </Typography>
-        <PaletteSelector
-            selectedPalette={selectedPalette}
-            setAppState={setAppState} />
+        <PaletteSelector />
       </Grid>
       <Grid item xs={12}>
         <Typography sx={{ mt: 2, mb: 1.5 }} variant="h7" component="div">
@@ -64,9 +65,7 @@ export default function ConfigurationPanel({
           max={1000}
           value={spinningSpeed}
           onChange={(event, newValue) => {
-            setAppState({
-              spinningSpeed: newValue
-            })
+            dispatch(setSpinningSpeed(newValue));
           }}
         />
       </Grid>

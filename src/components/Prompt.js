@@ -1,27 +1,20 @@
 import * as React from 'react';
-import getConfig from "../services/gemini";
-
+import { useDispatch, useSelector } from "react-redux";
 import Grid from '@mui/material/Grid';
 import LoadingButton from '@mui/lab/LoadingButton';
 import TextField from '@mui/material/TextField';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import { fetchLLMGeneratedConfig } from "../redux/features/appSlice";
 
-export default function Prompt({ handleConfig, isLoading, setAppState }) {
-  const [error, setError] = React.useState(null);
-  
+export default function Prompt() {
+  const dispatch = useDispatch();
+  const { error, isLoading } = useSelector((state) => state.app);
 
   const handleSubmit = async () => {
-    try {
-      setAppState({ isLoading: true });
-      setError(null);
-      const userInput = document.getElementById("user-prompt");
-      const config = await getConfig(userInput.value);
-      handleConfig(config);
-      setAppState({ isLoading: false });
-    } catch (error) {
-      setAppState({ isLoading: false });
-      setError("Something went wrong. Please try again later.", error);
-      console.log("Error: ", error);
-    }
+    const userInput = document.getElementById("user-prompt");
+    dispatch(fetchLLMGeneratedConfig(userInput.value));
   };
 
   return (
@@ -37,7 +30,16 @@ export default function Prompt({ handleConfig, isLoading, setAppState }) {
           maxRows={6}
         />
         {
-          error && <p style={{color: 'red'}}>{error}</p>
+          error && 
+          <Snackbar
+            open={open}
+            autoHideDuration={6000}
+            message={error}>
+            <Alert severity="error">
+              <AlertTitle>Error</AlertTitle>
+              {error}
+            </Alert>
+          </Snackbar>
         }
       </Grid>
       <Grid item xs={4}>

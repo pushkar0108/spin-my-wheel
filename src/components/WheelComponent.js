@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import Box from '@mui/material/Box';
 import useSound from 'use-sound';
 import sound from '../../public/sounds/1.mp3';
 import { PALETTES } from '../config/constants';
 import { Wheel } from "spin-wheel/dist/spin-wheel-esm.js";
+import { addResult, setShowConfetti } from "../redux/features/appSlice";
 
 const getSegColors = ({ selectedPalette, segCount }) => {
   const segColors = PALETTES[selectedPalette];
@@ -19,13 +21,16 @@ const getSegColors = ({ selectedPalette, segCount }) => {
   return arr;
 };
 
-export default function WheelComponent({
-  segments, itemBackgroundColors, selectedPalette, onFinished, spinningSpeed
-}) {
+export default function WheelComponent() {
+  const dispatch = useDispatch();
   const [wheel, setWheel] = useState(null);
   const [play, { stop }] = useSound(sound);
-  const visibleSegments = segments.filter(segment => segment[1]);
 
+  const { 
+    segments, itemBackgroundColors, selectedPalette, spinningSpeed 
+  } = useSelector((state) => state.app);
+  
+  const visibleSegments = segments.filter(segment => segment[1]);
   const props = {
     name: 'Movies',
     radius: 0.88,
@@ -53,7 +58,10 @@ export default function WheelComponent({
       console.log("[onSpin] called: ", argv);
     },
     onRest: ({ currentIndex }) => {
-      onFinished(visibleSegments[currentIndex]);
+      dispatch(addResult(visibleSegments[currentIndex]));
+      setTimeout(() => {
+        dispatch(setShowConfetti(false));
+      }, 10 * 1000);
     }
   };
 

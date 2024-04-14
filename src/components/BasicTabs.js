@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useSelector } from "react-redux";
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
@@ -39,13 +40,14 @@ function a11yProps(index) {
   };
 }
 
-export default function BasicTabs({
-  segments, setAppState, selectedPalette, results, spinningSpeed, isLoading
-}) {
+export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
   const [openModal, setOpenModal] = React.useState(false);
   const handleModalOpen = () => setOpenModal(true);
   const handleModalClose = () => setOpenModal(false);
+  const { 
+    results, isLoading, segments, 
+  } = useSelector((state) => state.app);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -98,10 +100,7 @@ export default function BasicTabs({
                 })
               }
             </> :
-            <List
-              segments={segments}
-              setAppState={setAppState}
-            />
+            <List />
           }
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>
@@ -117,11 +116,7 @@ export default function BasicTabs({
         isOpen={openModal}
         handleModalClose={handleModalClose}
       >
-        <ConfigurationPanel 
-          spinningSpeed={spinningSpeed}
-          selectedPalette={selectedPalette}
-          setAppState={setAppState}
-        />
+        <ConfigurationPanel  />
       </Modal>
     </Paper>
 
