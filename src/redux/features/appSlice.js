@@ -17,12 +17,19 @@ const appSlice = createSlice({
     itemBackgroundColors: null,
     selectedPalette: 0,
     showConfetti: false,
+    showConfigModal: false,
     results: [],
     spinningSpeed: 300,
     spinningSound: '',
     winningSound: '',
     isLoading: false,
     error: null,
+    snackbar: {
+      open: false,
+      severity: 'error', // error, success
+      title: '',
+      message: '',
+    }
   },
   reducers: {
     setAppLoading: (state, action) => {
@@ -41,10 +48,16 @@ const appSlice = createSlice({
     setShowConfetti: (state, action) => {
       state.showConfetti = action.payload;
     },
+    setShowConfigModal: (state, action) => {
+      state.showConfigModal = action.payload;
+    },
     addResult: (state, action) => {
       state.results = [...state.results, action.payload];
       state.showConfetti = true;
-    }
+    },
+    showSnackBar: (state, action) => {
+      state.snackbar = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -62,11 +75,17 @@ const appSlice = createSlice({
       .addCase(fetchLLMGeneratedConfig.rejected, (state, action) => {
         state.error = "Something went wrong. Please try again later.";
         state.isLoading = false;
+        state.snackbar = {
+          open: true,
+          severity: 'error',
+          title: 'Error',
+          message: state.error,
+        };
       });
   }
 });
 
 export const {
-  setAppLoading, setSegments, setSelectedPalette, setSpinningSpeed, setShowConfetti, addResult
+  setAppLoading, setSegments, setSelectedPalette, setSpinningSpeed, setShowConfetti, setShowConfigModal, addResult, showSnackBar
 } = appSlice.actions;
 export default appSlice.reducer;

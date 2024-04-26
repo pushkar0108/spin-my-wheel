@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useDispatch } from "react-redux";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,14 +15,44 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import SettingsIcon from '@mui/icons-material/Settings';
+import ShareIcon from '@mui/icons-material/Share';
+import FeedbackIcon from '@mui/icons-material/Feedback';
 import { useTheme } from '@mui/material/styles';
 import { ColorModeContext } from "../themeContext";
 import Image from 'next/image';
+import { setShowConfigModal, showSnackBar } from "../redux/features/appSlice";
 
-const pages = ['New', 'Open', 'Wheels', 'Share'];
+const pages = [{
+  title: 'Share',
+  icon: <ShareIcon />,
+  onClick: (dispatch) => {
+    const text = 'https://www.pickerwheel.in';
+    navigator.clipboard.writeText(text);
+    dispatch(showSnackBar({
+      open: true,
+      severity: 'success',
+      title: 'Website copied to clipboard!',
+      message: text,
+    }));
+  },
+}, {
+  title: 'Settings',
+  icon: <SettingsIcon />,
+  onClick: (dispatch) => {
+    console.log("Settings fired");
+    dispatch(setShowConfigModal(true));
+  },
+}, {
+  title: 'Feedback',
+  icon: <FeedbackIcon />,
+  onClick: () => {},
+}];
+
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
+  const dispatch = useDispatch();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -32,8 +63,13 @@ function ResponsiveAppBar() {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (page) => {
     setAnchorElNav(null);
+  };
+
+  const handlePageClick = (page) => {
+    setAnchorElNav(null);
+    page.onClick(dispatch);
   };
 
   const handleCloseUserMenu = () => {
@@ -69,7 +105,7 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            Spin Wheel
+            Spin The Wheel
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -102,8 +138,9 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.title} onClick={() => handlePageClick(page)}>
+                  <Typography textAlign="center">{page.title} &nbsp;</Typography>
+                  {page.icon}
                 </MenuItem>
               ))}
             </Menu>
@@ -130,11 +167,12 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                key={page.title}
+                onClick={() => handlePageClick(page)}
+                sx={{ my: 2, color: 'white', display: 'flex', alignItems: 'flex-start' }}
               >
-                {page}
+                {page.title} &nbsp;
+                {page.icon}
               </Button>
             ))}
           </Box>
@@ -149,13 +187,13 @@ function ResponsiveAppBar() {
                 {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
               </IconButton>
             </Tooltip>
-            <Tooltip title="Open settings">
+            {/* <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
-            </Tooltip>
+            </Tooltip> */}
             
-            <Menu
+            {/* <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
               anchorEl={anchorElUser}
@@ -176,7 +214,7 @@ function ResponsiveAppBar() {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
-            </Menu>
+            </Menu> */}
           </Box>
         </Toolbar>
       </Container>

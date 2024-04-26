@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
@@ -10,8 +10,8 @@ import List from "./List";
 import Paper from '@mui/material/Paper';
 import Skeleton from '@mui/material/Skeleton';
 import SettingsIcon from '@mui/icons-material/Settings';
-import Modal from './Modal';
-import ConfigurationPanel from "./ConfigurationPanel";
+import { setShowConfigModal} from "../redux/features/appSlice";
+
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -41,10 +41,8 @@ function a11yProps(index) {
 }
 
 export default function BasicTabs() {
+  const dispatch = useDispatch();
   const [value, setValue] = React.useState(0);
-  const [openModal, setOpenModal] = React.useState(false);
-  const handleModalOpen = () => setOpenModal(true);
-  const handleModalClose = () => setOpenModal(false);
   const { 
     results, isLoading, segments, 
   } = useSelector((state) => state.app);
@@ -60,7 +58,9 @@ export default function BasicTabs() {
           <div>Spinning Wheel</div>
         </Grid>
         <Grid item xs={4}>
-          <SettingsIcon sx={{ float: 'right' }} onClick={handleModalOpen} />
+          <SettingsIcon sx={{ float: 'right', cursor: 'pointer' }} onClick={() => {
+            dispatch(setShowConfigModal(true));
+          }} />
         </Grid>
       </Grid>
       
@@ -111,14 +111,6 @@ export default function BasicTabs() {
           }
         </CustomTabPanel>
       </Box>
-
-      <Modal
-        isOpen={openModal}
-        handleModalClose={handleModalClose}
-      >
-        <ConfigurationPanel  />
-      </Modal>
     </Paper>
-
   );
 }
