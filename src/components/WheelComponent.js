@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import Box from '@mui/material/Box';
+import Skeleton from '@mui/material/Skeleton';
 import useSound from 'use-sound';
 import audioFile from '../../public/sounds/1.mp3';
 import { PALETTES } from '../config/constants';
