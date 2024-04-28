@@ -25,7 +25,12 @@ function CustomTabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{
+          p: {
+            sm: 1,
+            md: 3
+          }
+         }}>
           <Typography component="div">{children}</Typography>
         </Box>
       )}
@@ -92,7 +97,7 @@ export default function BasicTabs() {
               {
                 [1, 2, 3, 4, 5].map(el => {
                   return (
-                    <Box key={el} sx={{ display: 'flex', padding: 2}}>
+                    <Box key={el} sx={{ display: 'flex', padding: 0}}>
                       <Skeleton animation="wave" variant="circular" width={40} height={40} />
                       <Skeleton animation="wave" variant="text" sx={{marginLeft: "10px"}} width="80%" />
                     </Box>

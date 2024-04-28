@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import Box from '@mui/material/Box';
 import useSound from 'use-sound';
-import sound from '../../public/sounds/1.mp3';
+import audioFile from '../../public/sounds/1.mp3';
 import { PALETTES } from '../config/constants';
 import { Wheel } from "spin-wheel/dist/spin-wheel-esm.js";
 import { addResult, setShowConfetti } from "../redux/features/appSlice";
@@ -21,14 +21,40 @@ const getSegColors = ({ selectedPalette, segCount }) => {
   return arr;
 };
 
-export default function WheelComponent() {
-  const dispatch = useDispatch();
-  const [wheel, setWheel] = useState(null);
-  const [play, { stop }] = useSound(sound);
+export default function WheelComponentWrapper({ isLoading }) {
+  return (
+    isLoading ?
+    <Box className="margin-auto wheel-container"
+      sx={{
+        height: "100%",
+        padding: "10px",
+        paddingTop: "20px"
+      }}>
+        <Skeleton 
+          variant="circular" 
+          width={400} 
+          height={400} 
+          animation="wave" />
+    </Box>
+    :
+    <WheelComponent />
+  )
+}
 
+export function WheelComponent() {
+  const dispatch = useDispatch();
   const { 
-    segments, itemBackgroundColors, selectedPalette, spinningSpeed 
+    segments, itemBackgroundColors, selectedPalette, spinningSpeed, muteWheel,
   } = useSelector((state) => state.app);
+
+  const [wheel, setWheel] = useState(null);
+  const [play, { sound, stop }] = useSound(audioFile, {
+    soundEnabled: !muteWheel
+  });
+
+  useEffect(() => {
+    sound && sound.volume(muteWheel ? 0 : 1);
+  }, [muteWheel]);
   
   const visibleSegments = segments.filter(segment => segment[1]);
   const props = {
@@ -86,7 +112,6 @@ export default function WheelComponent() {
         setTimeout(stop, 4000);
         wheel.spin(props.rotationSpeedMax);
       }}>
-
     </Box>
   )
 }

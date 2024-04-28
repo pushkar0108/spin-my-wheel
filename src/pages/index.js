@@ -2,52 +2,67 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import Skeleton from '@mui/material/Skeleton';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
+import VolumeOffIcon from '@mui/icons-material/VolumeOff';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 
 import Layout from '../components/Layout';
-import WheelComponent from '../components/WheelComponent';
-import BasicTabs from '../components/BasicTabs';
+import WheelComponentWrapper from '../components/WheelComponent';
 import Confetti from '../components/Confetti';
 import HowToUse from '../components/HowToUse';
 import WhatToUse from '../components/WhatToUse';
-import Prompt from '../components/Prompt';
 import Modal from '../components/Modal';
 import ConfigurationPanel from "../components/ConfigurationPanel";
-import { setShowConfigModal, showSnackBar } from "../redux/features/appSlice";
+import RightPanel from "../components/RightPanel";
+
+
+import { setShowConfigModal, showSnackBar, toggleShowTable, toggleMuteWheel } from "../redux/features/appSlice";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const { snackbar, showConfetti, isLoading, showConfigModal } = useSelector((state) => state.app);
+  
+  const { snackbar, showConfetti, muteWheel, isLoading, showConfigModal } = useSelector((state) => state.app);
 
   return (
     <Layout>
-      <Grid container spacing={2} justifyContent="space-around" alignItems="flex-start">
+
+      <Box textAlign='center'>
+        <ButtonGroup 
+          size="small"
+          variant="text"
+          aria-label="Vertical button group">
+          <Button
+            onClick={() => dispatch(toggleMuteWheel())}
+            key="two"
+            startIcon={
+              muteWheel ?
+              <VolumeOffIcon /> :
+              <VolumeUpIcon />
+            }>
+              {`${muteWheel ? 'UnMute' : 'Mute'} Wheel`}
+          </Button>
+          <Button key="one">
+            <Switch
+              defaultChecked
+              onClick={() => dispatch(toggleShowTable())}
+            />  
+            Show Table
+          </Button>
+        </ButtonGroup>
+      </Box>
+      
+      <Grid container justifyContent="space-around" alignItems="flex-start">
         <Grid item xs={12} md={5}>
-          {
-            isLoading ?
-            <Box className="margin-auto wheel-container"
-              sx={{
-                height: "100%",
-                padding: "10px",
-                paddingTop: "20px"
-              }}>
-                <Skeleton 
-                  variant="circular" 
-                  width={400} 
-                  height={400} 
-                  animation="wave" />
-            </Box>
-            :
-            <WheelComponent />
-          }
+          <WheelComponentWrapper isLoading={isLoading} />
         </Grid>
-        <Grid item xs={10} md={5}>
-          <Prompt />
-          <BasicTabs />
-        </Grid>
+        <RightPanel />
       </Grid>
 
       <HowToUse />

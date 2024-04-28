@@ -18,6 +18,8 @@ const appSlice = createSlice({
     selectedPalette: 0,
     showConfetti: false,
     showConfigModal: false,
+    showTable: true,
+    muteWheel: false,
     results: [],
     spinningSpeed: 300,
     spinningSound: '',
@@ -47,6 +49,12 @@ const appSlice = createSlice({
     },
     setShowConfetti: (state, action) => {
       state.showConfetti = action.payload;
+    },
+    toggleShowTable: (state, action) => {
+      state.showTable = !state.showTable;
+    },
+    toggleMuteWheel: (state, action) => {
+      state.muteWheel = !state.muteWheel;
     },
     setShowConfigModal: (state, action) => {
       state.showConfigModal = action.payload;
@@ -86,6 +94,6 @@ const appSlice = createSlice({
 });
 
 export const {
-  setAppLoading, setSegments, setSelectedPalette, setSpinningSpeed, setShowConfetti, setShowConfigModal, addResult, showSnackBar
+  setAppLoading, setSegments, setSelectedPalette, setSpinningSpeed, setShowConfetti, setShowConfigModal, toggleShowTable, toggleMuteWheel, addResult, showSnackBar
 } = appSlice.actions;
 export default appSlice.reducer;
