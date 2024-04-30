@@ -26,3 +26,16 @@ export const DEFAULT_SEGMENTS = [
   ['No', true],
 ];
 
+export const TRUTH_DARE_DEFAULT_SEGMENTS = [
+  ['Truth', true],
+  ['Dare', true],
+  ['Truth', true],
+  ['Dare', true],
+  ['Truth', true],
+  ['Dare', true],
+  ['Truth', true],
+  ['Dare', true],
+  ['Truth', true],
+  ['Dare', true],
+];
+

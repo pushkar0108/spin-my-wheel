@@ -4,6 +4,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Navigation from "./Navigation";
 import Footer from "./Footer";
 import { ColorModeContext } from "../themeContext";
+import Head from "next/head";
 
 export const metadata = {
   title: 'Create Next App',
@@ -33,6 +34,13 @@ export default function Layout({ children }) {
 
   return (
     <ColorModeContext.Provider value={colorMode}>
+      <Head>
+        <meta name="description" content="Spinner Wheel" />
+        <meta name="author" content="Pushkar" />
+        <title>Spinner Wheel</title>
+        <link rel="shortcut icon" type="image/x-icon" href="/images/wheel-icon.png" />
+      </Head>
+      
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Navigation />

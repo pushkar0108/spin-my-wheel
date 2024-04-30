@@ -58,19 +58,8 @@ export default function BasicTabs() {
 
   return (
     <Paper elevation={3} className="p-4 mt-8">
-      <Grid container spacing={2}>
+      <Grid container spacing={2} sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Grid item xs={8}>
-          <div>Spinning Wheel</div>
-        </Grid>
-        <Grid item xs={4}>
-          <SettingsIcon sx={{ float: 'right', cursor: 'pointer' }} onClick={() => {
-            dispatch(setShowConfigModal(true));
-          }} />
-        </Grid>
-      </Grid>
-      
-      <Box sx={{ width: '100%' }}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
             <Tab value={0} {...a11yProps(0)}
               label={
@@ -89,7 +78,15 @@ export default function BasicTabs() {
               }
             />
           </Tabs>
-        </Box>
+        </Grid>
+        <Grid item xs={4}>
+          <SettingsIcon sx={{ float: 'right', cursor: 'pointer' }} onClick={() => {
+            dispatch(setShowConfigModal(true));
+          }} />
+        </Grid>
+      </Grid>
+      
+      <Box sx={{ width: '100%' }}>
         <CustomTabPanel value={value} index={0}>
           {
             isLoading ?

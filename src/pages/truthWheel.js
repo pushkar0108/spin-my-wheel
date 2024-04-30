@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -20,24 +19,26 @@ import WhatToUse from '../components/WhatToUse';
 import Modal from '../components/Modal';
 import ConfigurationPanel from "../components/ConfigurationPanel";
 import RightPanel from "../components/RightPanel";
+import { TRUTH_DARE_DEFAULT_SEGMENTS } from '../config/constants';
+import { setSegments } from "../redux/features/appSlice";
 
 
 import { setShowConfigModal, showSnackBar, toggleShowTable, toggleMuteWheel } from "../redux/features/appSlice";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const handle = useFullScreenHandle();
   
-  const { snackbar, showConfetti, fullScreenCounter, muteWheel, isLoading, showConfigModal } = useSelector((state) => state.app);
+  const { snackbar, showConfetti, muteWheel, isLoading, showConfigModal } = useSelector((state) => state.app);
 
   useEffect(() => {
-    if (!handle.active && fullScreenCounter) {
-      handle.enter();
-    }
-  }, [fullScreenCounter]);
+    dispatch(
+      setSegments(TRUTH_DARE_DEFAULT_SEGMENTS)
+    );
+  }, []);
 
   return (
     <Layout>
+
       <Box textAlign='center'>
         <ButtonGroup 
           size="small"
@@ -63,18 +64,12 @@ export default function Home() {
         </ButtonGroup>
       </Box>
       
-      <FullScreen handle={handle}>
-        <Grid container justifyContent="space-around" alignItems="flex-start">
-          <Grid item xs={12} md={5}>
-            <WheelComponentWrapper isLoading={isLoading} />
-          </Grid>
-          <RightPanel />
+      <Grid container justifyContent="space-around" alignItems="flex-start">
+        <Grid item xs={12} md={5}>
+          <WheelComponentWrapper isLoading={isLoading} />
         </Grid>
-        { showConfetti && <Confetti /> }
-      </FullScreen>
-
-      <HowToUse />
-      <WhatToUse />
+        <RightPanel />
+      </Grid>
 
       <Modal
         isOpen={showConfigModal}
@@ -97,7 +92,7 @@ export default function Home() {
           {snackbar.message}
         </Alert>
       </Snackbar>
-      
+      { showConfetti && <Confetti /> }
     </Layout>
   );
 }

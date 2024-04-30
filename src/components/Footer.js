@@ -63,11 +63,9 @@ function Footer() {
             <NavigationList 
               title="Ready-made wheels"
               list={[
-                "Random name wheels",
-                "Geography wheels",
-                "Random decision makers",
-                "Random number generators",
-                "Random letter generators",
+                "Truth & Dare wheel",
+                "Lucky 7 wheel",
+                "Random Decision wheel"
               ]}
             />
           </Grid>

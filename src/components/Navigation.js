@@ -16,14 +16,19 @@ import AdbIcon from '@mui/icons-material/Adb';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import SettingsIcon from '@mui/icons-material/Settings';
+import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import ShareIcon from '@mui/icons-material/Share';
 import FeedbackIcon from '@mui/icons-material/Feedback';
 import { useTheme } from '@mui/material/styles';
 import { ColorModeContext } from "../themeContext";
 import Image from 'next/image';
-import { setShowConfigModal, showSnackBar } from "../redux/features/appSlice";
+import { setShowConfigModal, incrementFullScreenCounter, showSnackBar } from "../redux/features/appSlice";
 
 const pages = [{
+  title: 'Feedback',
+  icon: <FeedbackIcon />,
+  onClick: () => {},
+}, {
   title: 'Share',
   icon: <ShareIcon />,
   onClick: (dispatch) => {
@@ -36,17 +41,19 @@ const pages = [{
       message: text,
     }));
   },
-}, {
+},{
   title: 'Settings',
   icon: <SettingsIcon />,
   onClick: (dispatch) => {
     console.log("Settings fired");
     dispatch(setShowConfigModal(true));
   },
-}, {
-  title: 'Feedback',
-  icon: <FeedbackIcon />,
-  onClick: () => {},
+},{
+  title: 'Full Screen',
+  icon: <FullscreenIcon />,
+  onClick: (dispatch) => {
+    dispatch(incrementFullScreenCounter());
+  },
 }];
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -90,7 +97,7 @@ function ResponsiveAppBar() {
             alt="Picture of the author"
           />
           <Typography
-            variant="h6"
+            variant="h7"
             noWrap
             component="a"
             href="/"
@@ -99,12 +106,13 @@ function ResponsiveAppBar() {
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
+              fontFamily: 'circular',
+              fontSize: '21px !important',
             }}
           >
-            Pickerwheel
+            PickerWheel
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -155,14 +163,14 @@ function ResponsiveAppBar() {
               flexGrow: 1,
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
+              // letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
             }}
           >
             Pickerwheel
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, flexDirection: 'row-reverse', display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
                 key={page.title}
