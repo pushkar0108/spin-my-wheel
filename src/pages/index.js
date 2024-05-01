@@ -5,9 +5,6 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
 import Switch from '@mui/material/Switch';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
@@ -17,18 +14,17 @@ import WheelComponentWrapper from '../components/WheelComponent';
 import Confetti from '../components/Confetti';
 import HowToUse from '../components/HowToUse';
 import WhatToUse from '../components/WhatToUse';
-import Modal from '../components/Modal';
-import ConfigurationPanel from "../components/ConfigurationPanel";
 import RightPanel from "../components/RightPanel";
+import ResultPanel from "../components/ResultPanel";
+import Modal from '../components/Modal';
 
-
-import { setShowConfigModal, showSnackBar, toggleShowTable, toggleMuteWheel } from "../redux/features/appSlice";
+import { toggleShowTable, toggleMuteWheel, setShowResultModal } from "../redux/features/appSlice";
 
 export default function Home() {
   const dispatch = useDispatch();
   const handle = useFullScreenHandle();
   
-  const { snackbar, showConfetti, fullScreenCounter, muteWheel, isLoading, showConfigModal } = useSelector((state) => state.app);
+  const { showConfetti, fullScreenCounter, muteWheel, isLoading, showResultModal } = useSelector((state) => state.app);
 
   useEffect(() => {
     if (!handle.active && fullScreenCounter) {
@@ -71,33 +67,17 @@ export default function Home() {
           <RightPanel />
         </Grid>
         { showConfetti && <Confetti /> }
+        <Modal
+          isOpen={showResultModal}
+          handleModalClose={() => {
+            dispatch(setShowResultModal(false));
+          }}>
+          <ResultPanel  />
+        </Modal>
       </FullScreen>
 
       <HowToUse />
       <WhatToUse />
-
-      <Modal
-        isOpen={showConfigModal}
-        handleModalClose={() => {
-          dispatch(setShowConfigModal(false));
-        }}
-      >
-        <ConfigurationPanel  />
-      </Modal>
-
-      <Snackbar
-        open={snackbar.open}
-        autoHideDuration={4000}
-        onClose={() => {
-          dispatch(showSnackBar({ open: false }));
-        }}
-        message={snackbar.message}>
-        <Alert severity={snackbar.severity}>
-          <AlertTitle>{snackbar.title}</AlertTitle>
-          {snackbar.message}
-        </Alert>
-      </Snackbar>
-      
     </Layout>
   );
 }

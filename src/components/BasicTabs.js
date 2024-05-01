@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
@@ -9,9 +9,6 @@ import Badge from '@mui/material/Badge';
 import List from "./List";
 import Paper from '@mui/material/Paper';
 import Skeleton from '@mui/material/Skeleton';
-import SettingsIcon from '@mui/icons-material/Settings';
-import { setShowConfigModal} from "../redux/features/appSlice";
-
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -46,7 +43,6 @@ function a11yProps(index) {
 }
 
 export default function BasicTabs() {
-  const dispatch = useDispatch();
   const [value, setValue] = React.useState(0);
   const { 
     results, isLoading, segments, 
@@ -79,11 +75,11 @@ export default function BasicTabs() {
             />
           </Tabs>
         </Grid>
-        <Grid item xs={4}>
+        {/* <Grid item xs={4}>
           <SettingsIcon sx={{ float: 'right', cursor: 'pointer' }} onClick={() => {
             dispatch(setShowConfigModal(true));
           }} />
-        </Grid>
+        </Grid> */}
       </Grid>
       
       <Box sx={{ width: '100%' }}>

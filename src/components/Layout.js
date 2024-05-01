@@ -1,10 +1,18 @@
 import * as React from "react";
+import Head from "next/head";
+import { useDispatch, useSelector } from "react-redux";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Navigation from "./Navigation";
-import Footer from "./Footer";
+
 import { ColorModeContext } from "../themeContext";
-import Head from "next/head";
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import Modal from '../components/Modal';
+import Footer from "./Footer";
+import Navigation from "./Navigation";
+import ConfigurationPanel from "../components/ConfigurationPanel";
+import { setShowConfigModal, showSnackBar } from "../redux/features/appSlice";
 
 export const metadata = {
   title: 'Create Next App',
@@ -12,6 +20,10 @@ export const metadata = {
 }
 
 export default function Layout({ children }) {
+  const dispatch = useDispatch();
+  
+  const { snackbar, showConfigModal } = useSelector((state) => state.app);
+
   const [mode, setMode] = React.useState('dark');
   const colorMode = React.useMemo(
     () => ({
@@ -46,6 +58,31 @@ export default function Layout({ children }) {
         <Navigation />
         {children}
         <Footer />
+        <Modal
+          width={{
+            md: "80vw",
+            lg: "60vw",
+          }}
+          isOpen={showConfigModal}
+          handleModalClose={() => {
+            dispatch(setShowConfigModal(false));
+          }}
+        >
+          <ConfigurationPanel  />
+        </Modal>
+
+        <Snackbar
+          open={snackbar.open}
+          autoHideDuration={4000}
+          onClose={() => {
+            dispatch(showSnackBar({ open: false }));
+          }}
+          message={snackbar.message}>
+          <Alert severity={snackbar.severity}>
+            <AlertTitle>{snackbar.title}</AlertTitle>
+            {snackbar.message}
+          </Alert>
+        </Snackbar>
       </ThemeProvider>
     </ColorModeContext.Provider>
   )

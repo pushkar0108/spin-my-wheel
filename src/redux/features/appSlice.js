@@ -18,6 +18,7 @@ const appSlice = createSlice({
     selectedPalette: 0,
     showConfetti: false,
     showConfigModal: false,
+    showResultModal: false,
     showTable: true,
     fullScreenCounter: 0, // We need this to keep calling useEffect
     muteWheel: false,
@@ -60,12 +61,16 @@ const appSlice = createSlice({
     setShowConfigModal: (state, action) => {
       state.showConfigModal = action.payload;
     },
+    setShowResultModal: (state, action) => {
+      state.showResultModal = action.payload;
+    },
     incrementFullScreenCounter: (state, action) => {
       state.fullScreenCounter += 1;
     },
     addResult: (state, action) => {
-      state.results = [...state.results, action.payload];
+      state.results = [action.payload, ...state.results];
       state.showConfetti = true;
+      state.showResultModal = true;
     },
     showSnackBar: (state, action) => {
       state.snackbar = action.payload;
@@ -98,6 +103,6 @@ const appSlice = createSlice({
 });
 
 export const {
-  setAppLoading, setSegments, setSelectedPalette, setSpinningSpeed, setShowConfetti, setShowConfigModal, incrementFullScreenCounter, toggleShowTable, toggleMuteWheel, addResult, showSnackBar
+  setAppLoading, setSegments, setSelectedPalette, setSpinningSpeed, setShowConfetti, setShowConfigModal, setShowResultModal, incrementFullScreenCounter, toggleShowTable, toggleMuteWheel, addResult, showSnackBar
 } = appSlice.actions;
 export default appSlice.reducer;
