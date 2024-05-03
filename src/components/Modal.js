@@ -17,10 +17,11 @@ const style = {
 };
 
 export default function AppModal({ 
-  isOpen, handleModalClose, children, width,
+  isOpen, handleModalClose, children, width, container
 }) {
   return (
     <Modal
+      container={container}
       open={isOpen}
       onClose={handleModalClose}
       aria-labelledby="modal-modal-title"

@@ -60,20 +60,23 @@ export default function Home() {
       </Box>
       
       <FullScreen handle={handle}>
-        <Grid container justifyContent="space-around" alignItems="flex-start">
-          <Grid item xs={12} md={5}>
-            <WheelComponentWrapper isLoading={isLoading} />
+        <div id="fullscreen-container">
+          <Grid container justifyContent="space-around" alignItems="flex-start">
+            <Grid item xs={12} md={5}>
+              <WheelComponentWrapper isLoading={isLoading} />
+            </Grid>
+            <RightPanel />
           </Grid>
-          <RightPanel />
-        </Grid>
-        { showConfetti && <Confetti /> }
-        <Modal
-          isOpen={showResultModal}
-          handleModalClose={() => {
-            dispatch(setShowResultModal(false));
-          }}>
-          <ResultPanel  />
-        </Modal>
+          { showConfetti && <Confetti /> }
+          <Modal
+            container={() => document.getElementById("fullscreen-container")}
+            isOpen={showResultModal}
+            handleModalClose={() => {
+              dispatch(setShowResultModal(false));
+            }}>
+            <ResultPanel  />
+          </Modal>
+        </div>
       </FullScreen>
 
       <HowToUse />

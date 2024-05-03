@@ -52,8 +52,12 @@ function Footer() {
                 Happy Spinning!
               </Typography>
               <Box sx={{ mt: 1.5 }}>
-                <InstagramIcon sx={{ mr: 1 }} />
-                <FacebookIcon sx={{ mr: 1 }} />
+                <a href='https://www.instagram.com/pickerwheel.in/' target='_blank'>
+                  <InstagramIcon sx={{ mr: 1 }} />
+                </a>
+                <a href='https://www.facebook.com/profile.php?id=61559167377801&mibextid=LQQJ4d' target='_blank'>
+                  <FacebookIcon sx={{ mr: 1 }} />
+                </a>
                 <LinkedInIcon sx={{ mr: 1 }} />
                 <TwitterIcon sx={{ mr: 1 }} />
               </Box>
