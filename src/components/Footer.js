@@ -4,15 +4,16 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
-import Image from 'next/image';
 import Link from '@mui/material/Link';
+import Image from 'next/image';
+import * as NextLink from 'next/link';
 
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 
-const NavigationList = ({ title, list }) => {
+const NavigationList = ({ title, list, href }) => {
   return (
     <div className="m-4">
       <Typography sx={{ mb: 1.5 }} variant="h6" component="div">
@@ -20,10 +21,11 @@ const NavigationList = ({ title, list }) => {
       </Typography>
       {
         list.map(item => {
+          const {title, href = "dada"} = item;
           return (
-            <Link key={item} href="#" underline="hover">
+            <Link component={NextLink} underline='hover' href={href}>
               <Typography variant="caption" component="div">
-                {item}
+                {title}
               </Typography>
             </Link>
           )
@@ -67,9 +69,9 @@ function Footer() {
             <NavigationList 
               title="Ready-made wheels"
               list={[
-                "Truth & Dare wheel",
-                "Lucky 7 wheel",
-                "Random Decision wheel"
+                {title: "Truth & Dare wheel", href: "/truth-wheel"},
+                {title: "Lucky 7 wheel", href: "/lucky-7-wheel"},
+                {title: "Random Decision wheel", href: "/random-decision-wheel"},
               ]}
             />
           </Grid>
@@ -77,9 +79,9 @@ function Footer() {
             <NavigationList 
               title="Explore Community"
               list={[
-                "About us",
-                "Our terms",
-                "FAQs",
+                {title: "About us"},
+                {title: "Our terms"},
+                {title: "FAQs"},
               ]}
             />
           </Grid>

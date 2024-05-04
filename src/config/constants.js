@@ -39,3 +39,23 @@ export const TRUTH_DARE_DEFAULT_SEGMENTS = [
   ['Dare', true],
 ];
 
+export const LUCKY_7_DEFAULT_SEGMENTS = [
+  ['1', true],
+  ['2', true],
+  ['3', true],
+  ['4', true],
+  ['5', true],
+  ['6', true],
+  ['7', true],
+];
+
+export const RANDOM_DECISION_DEFAULT_SEGMENTS = [
+  ['Decision 1', true],
+  ['Decision 2', true],
+  ['Decision 3', true],
+  ['Decision 4', true],
+  ['Decision 5', true],
+  ['Decision 6', true],
+  ['Decision 7', true],
+];
+
