@@ -79,9 +79,9 @@ function Footer() {
             <NavigationList 
               title="Explore Community"
               list={[
-                {title: "About us"},
-                {title: "Our terms"},
-                {title: "FAQs"},
+                {title: "About us", href: "/about-us"},
+                {title: "Our terms", href: "/terms"},
+                {title: "FAQs", href: "/faq"},
               ]}
             />
           </Grid>

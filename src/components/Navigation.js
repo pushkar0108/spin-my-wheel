@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as NextLink from 'next/link';
 import { useDispatch } from "react-redux";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -22,12 +23,14 @@ import FeedbackIcon from '@mui/icons-material/Feedback';
 import { useTheme } from '@mui/material/styles';
 import { ColorModeContext } from "../themeContext";
 import Image from 'next/image';
-import { setShowConfigModal, incrementFullScreenCounter, showSnackBar } from "../redux/features/appSlice";
+import { setShowConfigModal, setShowFeedbackModal, incrementFullScreenCounter, showSnackBar } from "../redux/features/appSlice";
 
 const pages = [{
   title: 'Feedback',
   icon: <FeedbackIcon />,
-  onClick: () => {},
+  onClick: (dispatch) => {
+    dispatch(setShowFeedbackModal(true));
+  },
 }, {
   title: 'Share',
   icon: <ShareIcon />,
@@ -45,7 +48,6 @@ const pages = [{
   title: 'Settings',
   icon: <SettingsIcon />,
   onClick: (dispatch) => {
-    console.log("Settings fired");
     dispatch(setShowConfigModal(true));
   },
 },{
@@ -99,7 +101,7 @@ function ResponsiveAppBar() {
           <Typography
             variant="h7"
             noWrap
-            component="a"
+            component={NextLink}
             href="/"
             sx={{
               ml: { xs: 2, md: 2 },
@@ -155,7 +157,7 @@ function ResponsiveAppBar() {
           <Typography
             variant="h5"
             noWrap
-            component="a"
+            component={NextLink}
             href="/"
             sx={{
               mr: 2,

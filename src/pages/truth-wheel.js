@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import Layout from '../components/Layout';
 import { TRUTH_DARE_DEFAULT_SEGMENTS } from '../config/constants';

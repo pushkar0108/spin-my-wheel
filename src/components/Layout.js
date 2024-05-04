@@ -12,7 +12,8 @@ import Modal from '../components/Modal';
 import Footer from "./Footer";
 import Navigation from "./Navigation";
 import ConfigurationPanel from "../components/ConfigurationPanel";
-import { setShowConfigModal, showSnackBar } from "../redux/features/appSlice";
+import FeedbackPanel from "../components/FeedbackPanel";
+import { setShowConfigModal, setShowFeedbackModal, showSnackBar } from "../redux/features/appSlice";
 
 export const metadata = {
   title: 'Create Next App',
@@ -22,7 +23,7 @@ export const metadata = {
 export default function Layout({ children }) {
   const dispatch = useDispatch();
   
-  const { snackbar, showConfigModal } = useSelector((state) => state.app);
+  const { snackbar, showConfigModal, showFeedbackModal } = useSelector((state) => state.app);
 
   const [mode, setMode] = React.useState('dark');
   const colorMode = React.useMemo(
@@ -69,6 +70,19 @@ export default function Layout({ children }) {
           }}
         >
           <ConfigurationPanel  />
+        </Modal>
+
+        <Modal
+          width={{
+            md: "80vw",
+            lg: "60vw",
+          }}
+          isOpen={showFeedbackModal}
+          handleModalClose={() => {
+            dispatch(setShowFeedbackModal(false));
+          }}
+        >
+          <FeedbackPanel  />
         </Modal>
 
         <Snackbar

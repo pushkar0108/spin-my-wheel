@@ -13,7 +13,7 @@ export const PALETTES = [
   ["#5FAD56", "#F2C14E", "#F78154", "#B4436C"],
 ];
 
-export const DEFAULT_SEGMENTS = [
+export const YES_NO_DEFAULT_SEGMENTS = [
   ['Yes', true],
   ['No', true],
   ['Yes', true],

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { DEFAULT_SEGMENTS } from '../../config/constants';
+import { YES_NO_DEFAULT_SEGMENTS } from '../../config/constants';
 import getLLMConfig from "../../services/gemini";
 
 export const fetchLLMGeneratedConfig = createAsyncThunk(
@@ -13,12 +13,13 @@ export const fetchLLMGeneratedConfig = createAsyncThunk(
 const appSlice = createSlice({
   name: "app",
   initialState: {
-    segments: DEFAULT_SEGMENTS,
+    segments: YES_NO_DEFAULT_SEGMENTS,
     itemBackgroundColors: null,
     selectedPalette: 0,
     showConfetti: false,
     showConfigModal: false,
     showResultModal: false,
+    showFeedbackModal: false,
     showTable: true,
     fullScreenCounter: 0, // We need this to keep calling useEffect
     muteWheel: false,
@@ -64,6 +65,9 @@ const appSlice = createSlice({
     setShowResultModal: (state, action) => {
       state.showResultModal = action.payload;
     },
+    setShowFeedbackModal: (state, action) => {
+      state.showFeedbackModal = action.payload;
+    },
     incrementFullScreenCounter: (state, action) => {
       state.fullScreenCounter += 1;
     },
@@ -103,6 +107,6 @@ const appSlice = createSlice({
 });
 
 export const {
-  setAppLoading, setSegments, setSelectedPalette, setSpinningSpeed, setShowConfetti, setShowConfigModal, setShowResultModal, incrementFullScreenCounter, toggleShowTable, toggleMuteWheel, addResult, showSnackBar
+  setAppLoading, setSegments, setSelectedPalette, setSpinningSpeed, setShowConfetti, setShowConfigModal, setShowResultModal, setShowFeedbackModal, incrementFullScreenCounter, toggleShowTable, toggleMuteWheel, addResult, showSnackBar
 } = appSlice.actions;
 export default appSlice.reducer;
