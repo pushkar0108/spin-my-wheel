@@ -1,3 +1,6 @@
+import sound1 from '../../public/sounds/1.mp3';
+import winnerSound1 from '../../public/sounds/winner.mp3';
+
 export const PALETTES = [
   ['#c7160c', '#fff'],
   ["#FAD900", "#001C2F", "#B0A68F"],
@@ -57,5 +60,19 @@ export const RANDOM_DECISION_DEFAULT_SEGMENTS = [
   ['Decision 5', true],
   ['Decision 6', true],
   ['Decision 7', true],
+];
+
+export const SPINNING_SOUNDS = [
+  ['Sound 1', sound1],
+  ['Sound 2', sound1],
+  ['Sound 3', sound1],
+  ['Sound 4', sound1],
+];
+
+export const WINNING_SOUNDS = [
+  ['Winning 1', winnerSound1],
+  ['Winning 2', winnerSound1],
+  ['Winning 3', winnerSound1],
+  ['Winning 4', winnerSound1],
 ];
 

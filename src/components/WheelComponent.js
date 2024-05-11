@@ -4,7 +4,8 @@ import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton';
 import useSound from 'use-sound';
 import audioFile from '../../public/sounds/1.mp3';
-import { PALETTES } from '../config/constants';
+import winnerAudioFile from '../../public/sounds/winner.mp3';
+import { PALETTES, SPINNING_SOUNDS, WINNING_SOUNDS } from '../config/constants';
 import { Wheel } from "spin-wheel/dist/spin-wheel-esm.js";
 import { addResult, setShowConfetti } from "../redux/features/appSlice";
 
@@ -45,16 +46,22 @@ export default function WheelComponentWrapper({ isLoading }) {
 export function WheelComponent() {
   const dispatch = useDispatch();
   const { 
-    segments, itemBackgroundColors, selectedPalette, spinningSpeed, muteWheel,
+    segments, itemBackgroundColors, selectedPalette, spinningSpeed, spinningSoundIndex, spinningSoundVolume, winningSoundVolume, muteWheel,
   } = useSelector((state) => state.app);
 
   const [wheel, setWheel] = useState(null);
-  const [play, { sound, stop }] = useSound(audioFile, {
-    soundEnabled: !muteWheel
+  const [play, { sound, stop }] = useSound(
+    SPINNING_SOUNDS[spinningSoundIndex][1], {
+    soundEnabled: !muteWheel,
+    volume: spinningSoundVolume,
+  });
+
+  const [playWinningSound, { pause }] = useSound(winnerAudioFile, {
+    volume: 1,
   });
 
   useEffect(() => {
-    sound && sound.volume(muteWheel ? 0 : 1);
+    sound && sound.volume(muteWheel ? 0 : spinningSoundVolume);
   }, [muteWheel]);
   
   const visibleSegments = segments.filter(segment => segment[1]);
@@ -82,18 +89,19 @@ export function WheelComponent() {
       }
     }),
     onSpin: (argv) => {
-      console.log("[onSpin] called: ", argv);
+      // console.log("[onSpin] called: ", argv);
     },
     onRest: ({ currentIndex }) => {
+      
       dispatch(addResult(visibleSegments[currentIndex]));
       setTimeout(() => {
         dispatch(setShowConfetti(false));
+        playWinningSound();
       }, 10 * 1000);
     }
   };
 
   useEffect(() => {
-    console.log("fire once");
     const container = document.querySelector('.wheel-container');
     container.innerHTML = "";
     const newWheel = new Wheel(container, props);

@@ -1,21 +1,15 @@
-import React, {useEffect} from 'react'
+import React from 'react';
 import Confetti from 'react-confetti';
-
-import useSound from 'use-sound';
-import sound from '../../public/sounds/1.mp3';
+import useWindowSize from 'react-use/lib/useWindowSize';
 
 export default function AppConfetti({ }) {
-  const [play, { stop }] = useSound(sound);
-
-  useEffect(() => {
-    play();
-  }, []);
+  const { width, height } = useWindowSize();
 
   return (
     <Confetti
       recycle={false}
-      width={window.width}
-      height={window.height}
+      width={width}
+      height={height}
       // pieces={760}
       // friction={0.95}
     />

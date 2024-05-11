@@ -30,7 +30,7 @@ class MyApp extends App {
           strategy="beforeInteractive"
         />
         <Script
-          key={"push-gtm-event"}
+          key={"push-gtag-event"}
           id="push-gtm-event"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{

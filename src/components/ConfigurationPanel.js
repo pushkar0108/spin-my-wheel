@@ -9,21 +9,25 @@ import Slider from '@mui/material/Slider';
 import VolumeDown from '@mui/icons-material/VolumeDown';
 import VolumeUp from '@mui/icons-material/VolumeUp';
 import SoundSelector from './SoundSelector';
-import { setSpinningSpeed } from "../redux/features/appSlice";
+import { setSpinningSpeed, setSpinningSoundIndex, setWinningSoundIndex, setSpinningSoundVolume, setWinningSoundVolume } from "../redux/features/appSlice";
+import { SPINNING_SOUNDS, WINNING_SOUNDS } from '../config/constants';
 
-const ContinuousSlider = ({ leftIcon, rightIcon, onChangeHandler }) => {
-  const [value, setValue] = React.useState(30);
-
+const ContinuousSlider = ({ value, leftIcon, rightIcon, onChangeHandler }) => {
   const handleChange = (event, newValue) => {
-    setValue(newValue);
-    onChangeHandler && onChangeHandler(newValue);
+    onChangeHandler(newValue);
   };
 
   return (
     <Box>
       <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
         {leftIcon && leftIcon}
-        <Slider aria-label="Volume" value={value} onChange={handleChange} />
+        <Slider
+          min={0}
+          max={1}
+          step={.001}
+          aria-label="Volume"
+          value={value}
+          onChange={handleChange} />
         {rightIcon && rightIcon}
       </Stack>
     </Box>
@@ -32,7 +36,7 @@ const ContinuousSlider = ({ leftIcon, rightIcon, onChangeHandler }) => {
 
 export default function ConfigurationPanel() {
   const dispatch = useDispatch();
-  const { selectedPalette, spinningSpeed } = useSelector((state) => state.app);
+  const { selectedPalette, spinningSpeed, spinningSoundIndex, spinningSoundVolume, winningSoundIndex, winningSoundVolume } = useSelector((state) => state.app);
 
   return (
     <Grid container spacing={2}>
@@ -73,8 +77,20 @@ export default function ConfigurationPanel() {
         <Typography sx={{ mt: 2, mb: 1.5 }} variant="h7" component="div">
           Spining Sound
         </Typography>
-        <SoundSelector />
-        <ContinuousSlider 
+        <SoundSelector 
+          key={"spinning-sound-selector"}
+          soundIndex={spinningSoundIndex}
+          volume={spinningSoundVolume}
+          sounds={SPINNING_SOUNDS} 
+          handleChange={(sound) => {
+            dispatch(setSpinningSoundIndex(sound));
+          }}
+        />
+        <ContinuousSlider
+          value={spinningSoundVolume}
+          onChangeHandler={(newValue) => {
+            dispatch(setSpinningSoundVolume(newValue));
+          }}
           leftIcon={<VolumeDown />}
           rightIcon={<VolumeUp />}
         />
@@ -83,8 +99,20 @@ export default function ConfigurationPanel() {
         <Typography sx={{ mt: 2, mb: 1.5 }} variant="h7" component="div">
           Winning Sound
         </Typography>
-        <SoundSelector />
+        <SoundSelector
+          key={"winning-sound-selector"}
+          soundIndex={winningSoundIndex}
+          volume={winningSoundVolume}
+          sounds={WINNING_SOUNDS} 
+          handleChange={(sound) => {
+            dispatch(setWinningSoundIndex(sound));
+          }}
+        />
         <ContinuousSlider 
+          value={winningSoundVolume}
+          onChangeHandler={(newValue) => {
+            dispatch(setWinningSoundVolume(newValue));
+          }}
           leftIcon={<VolumeDown />}
           rightIcon={<VolumeUp />}
         />

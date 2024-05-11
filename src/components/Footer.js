@@ -60,8 +60,8 @@ function Footer() {
                 <a href='https://www.facebook.com/profile.php?id=61559167377801&mibextid=LQQJ4d' target='_blank'>
                   <FacebookIcon sx={{ mr: 1 }} />
                 </a>
-                <LinkedInIcon sx={{ mr: 1 }} />
-                <TwitterIcon sx={{ mr: 1 }} />
+                {/* <LinkedInIcon sx={{ mr: 1 }} />
+                <TwitterIcon sx={{ mr: 1 }} /> */}
               </Box>
             </div>
           </Grid>

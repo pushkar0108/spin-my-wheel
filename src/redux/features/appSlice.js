@@ -25,8 +25,10 @@ const appSlice = createSlice({
     muteWheel: false,
     results: [],
     spinningSpeed: 300,
-    spinningSound: '',
-    winningSound: '',
+    spinningSoundIndex: 0,
+    spinningSoundVolume: 0.3,
+    winningSoundIndex: 0,
+    winningSoundVolume: 0.6,
     isLoading: false,
     error: null,
     snackbar: {
@@ -49,6 +51,18 @@ const appSlice = createSlice({
     },
     setSpinningSpeed: (state, action) => {
       state.spinningSpeed = action.payload;
+    },
+    setSpinningSoundIndex: (state, action) => {
+      state.spinningSoundIndex = action.payload;
+    },
+    setSpinningSoundVolume: (state, action) => {
+      state.spinningSoundVolume = action.payload;
+    },
+    setWinningSoundIndex: (state, action) => {
+      state.winningSoundIndex = action.payload;
+    },
+    setWinningSoundVolume: (state, action) => {
+      state.winningSoundVolume = action.payload;
     },
     setShowConfetti: (state, action) => {
       state.showConfetti = action.payload;
@@ -107,6 +121,6 @@ const appSlice = createSlice({
 });
 
 export const {
-  setAppLoading, setSegments, setSelectedPalette, setSpinningSpeed, setShowConfetti, setShowConfigModal, setShowResultModal, setShowFeedbackModal, incrementFullScreenCounter, toggleShowTable, toggleMuteWheel, addResult, showSnackBar
+  setAppLoading, setSegments, setSelectedPalette, setSpinningSpeed, setSpinningSoundIndex, setSpinningSoundVolume, setWinningSoundIndex, setWinningSoundVolume, setShowConfetti, setShowConfigModal, setShowResultModal, setShowFeedbackModal, incrementFullScreenCounter, toggleShowTable, toggleMuteWheel, addResult, showSnackBar
 } = appSlice.actions;
 export default appSlice.reducer;
