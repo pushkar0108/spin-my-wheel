@@ -23,11 +23,11 @@ const NavigationList = ({ title, list, href }) => {
         list.map(item => {
           const {title, href = "dada"} = item;
           return (
-            <Link component={NextLink} underline='hover' href={href}>
-              <Typography variant="caption" component="div">
-                {title}
+              <Typography key={title} variant="caption" component="div">
+                <Link component={NextLink} underline='hover' href={href} color="text.primary">
+                  {title}
+                </Link>
               </Typography>
-            </Link>
           )
         })
       }

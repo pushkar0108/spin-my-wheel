@@ -48,11 +48,19 @@ export default function Layout({ children }) {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <Head>
+        <meta name="google-site-verification" content="0qeIngcvUH2pVGnfM-Z3nnw-VZ6lpnO7tOmtmCEbEoA" />
         <meta name="description" content="Spinner Wheel" />
         <meta name="author" content="Pushkar" />
         <title>Spinner Wheel</title>
         <link rel="shortcut icon" type="image/x-icon" href="/images/wheel-icon.png" />
       </Head>
+      <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T3QZ4R2X" height="0" width="0" style={{
+          display: 'none',
+          visibility: 'hidden',
+        }}></iframe>
+      </noscript>
+
       
       <ThemeProvider theme={theme}>
         <CssBaseline />
