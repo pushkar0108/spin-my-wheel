@@ -75,4 +75,3 @@ export const WINNING_SOUNDS = [
   ['Winning 3', winnerSound1],
   ['Winning 4', winnerSound1],
 ];
-

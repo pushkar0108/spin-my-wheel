@@ -1,11 +1,11 @@
+import _ from 'lodash';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton';
 import useSound from 'use-sound';
-import audioFile from '../../public/sounds/1.mp3';
 import winnerAudioFile from '../../public/sounds/winner.mp3';
-import { PALETTES, SPINNING_SOUNDS, WINNING_SOUNDS } from '../config/constants';
+import { PALETTES, SPINNING_SOUNDS } from '../config/constants';
 import { Wheel } from "spin-wheel/dist/spin-wheel-esm.js";
 import { addResult, setShowConfetti } from "../redux/features/appSlice";
 
@@ -56,9 +56,11 @@ export function WheelComponent() {
     volume: spinningSoundVolume,
   });
 
-  const [playWinningSound, { pause }] = useSound(winnerAudioFile, {
+  const [playWinningSound] = useSound(winnerAudioFile, {
     volume: 1,
   });
+
+  const playDebouncedWinningSound = _.debounce(playWinningSound, 9 * 1000);
 
   useEffect(() => {
     sound && sound.volume(muteWheel ? 0 : spinningSoundVolume);
@@ -92,11 +94,9 @@ export function WheelComponent() {
       // console.log("[onSpin] called: ", argv);
     },
     onRest: ({ currentIndex }) => {
-      
       dispatch(addResult(visibleSegments[currentIndex]));
       setTimeout(() => {
         dispatch(setShowConfetti(false));
-        playWinningSound();
       }, 10 * 1000);
     }
   };
@@ -119,6 +119,7 @@ export function WheelComponent() {
       onClick={() => {
         play();
         setTimeout(stop, 4000);
+        playDebouncedWinningSound();
         wheel.spin(props.rotationSpeedMax);
       }}>
     </Box>
