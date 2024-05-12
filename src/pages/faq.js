@@ -5,47 +5,99 @@ import Box from '@mui/material/Box';
 import Layout from '../components/Layout';
 import "../app/globals.css";
 
-const Component = ({ title, subTitle }) => {
+const Component = ({ title, subTitles }) => {
   return (
     <Box>
       <Typography sx={{ mt: 2, mb: 1.5 }} variant="h5" component="div">
         {title}
       </Typography>
-      <Typography sx={{ mb: 1.5 }} color="text.secondary">
-        {subTitle}
-      </Typography>
+      <ul>
+        {
+          subTitles.map(subTitle => {
+            return (
+              <li key={subTitle}>
+                <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                  {subTitle}
+                </Typography>
+              </li>
+            )
+          })
+        }
+      </ul>
     </Box>
   )
 }
 
 const items = [
   {
-    title: "Can I share my wheel with others?",
-    subTitle: "Yes, you can! We've written a helpful document that explains how to save and share your wheels."
+    title: "What is PickerWheel.in?",
+    subTitles: [
+      "PickerWheel.in is an online platform that allows users to create and customize spinning wheels for various purposes, including games, decision-making, giveaways, and more."
+    ]
   },
   {
-    title: "Can I save the wheel I created?",
-    subTitle: "The wheel you create on our home page is automatically saved for your next visit. You don't have to create an account or import/export anything. This happens completely automatically! If you want to create multiple wheels or save it to use it later (on a different device), you can create an account and save your wheel to your account."
+    title: "How does PickerWheel.in work?",
+    subTitles: [
+      "PickerWheel lets you create a spinning wheel by adding options such as names, numbers, prizes, or choices. Once the wheel is customized, you can spin it to randomly select an option."
+    ]
   },
   {
-    title: "Can I change how long the wheel spins?",
-    subTitle: "Yes. Where you define the wheel slices, click the 'cog' icon to open up the wheel settings. There, you can change the duration of the spin."
+    title: "Can I customize the spinning wheel? ",
+    subTitles: [
+      "Yes, PickerWheel offers customization options such as choosing colors, themes, and adding text or images to personalize your spinning wheel."
+    ]
   },
   {
-    title: "Can I display more than one wheel running at the same time?",
-    subTitle: "Not through our app but you can create two browser windows side-by-side and point them both to randomspinwheel.com."
+    title: "Can I change the sound of the spinning wheel?",
+    subTitles: [
+      "Yes, Enhance your spinning wheel experience with customized sound effects! PickerWheel offers the option to personalize the sound of your spinning wheel, adding an extra layer of excitement and immersion to every spin. Choose from a selection of fun and engaging sound effects to accompany the spinning motion, from classic clicking sounds to whimsical chimes. Whether you prefer a subtle background noise or an attention-grabbing tune, you can tailor the sound of your spinning wheel to suit your preferences and create a truly immersive experience for yourself and your audience."
+    ]
   },
   {
-    title: "How many entries can I add to the spinner wheel?",
-    subTitle: "Our random spin wheels can support up to 2,000 entries. If you add more than 150 entries, the words won't be added on the wheel anymore (to preserve space so the wheel is still readable) but they are used to calculate the random result."
+    title: "What can I use PickerWheel.in for? ",
+    subTitles: [
+      "PickerWheel can be used for a wide range of purposes, including -",
+      "● Hosting game nights: Spin the wheel to choose games or determine winners.",
+      "● Decision-making: Use the wheel to make fair and random decisions.",
+      "● Giveaways and contests: Select winners randomly for giveaways or contests.",
+      "● Classroom activities: Engage students by using the wheel for quizzes, discussions, or assigning tasks.",
+    ]
   },
   {
-    title: "Can I use emojis in the wheels?",
-    subTitle: "Yes, definitely! We think emojis make everything more fun so we encourage using them. Need to find a specific emoji? Here is a dictionary!"
+    title: "Is PickerWheel.in free to use? ",
+    subTitles: [
+      "Yes, PickerWheel offers a free version with all the features. We do not charge anyone to use Pickerwheel.in."
+    ]
   },
   {
-    title: "Is it possible to cheat?",
-    subTitle: "No! The wheel result is completely randomized. We do not run any pre-processing steps or other decision-making algorithms. The result the wheel lands on is chosen completely random and can not be rigged."
+    title: "Is PickerWheel.in mobile-friendly?",
+    subTitles: [
+      "Yes, PickerWheel is optimized for mobile devices, allowing you to create and spin wheels on smartphones and tablets."
+    ]
+  },
+  {
+    title: "Can I share my spinning wheel with others?",
+    subTitles: [
+      "Yes, PickerWheel provides options to share your spinning wheel with others via a unique URL or embedding it on your website or blog."
+    ]
+  },
+  {
+    title: "Is there a limit to the number of options I can add to the wheel?",
+    subTitles: [
+      "No there is no limit but we recommend not to go beyond 30 options.."
+    ]
+  },
+  {
+    title: "Is there a way to prevent bias in the selection process?",
+    subTitles: [
+      "Yes, PickerWheel uses advanced algorithms to ensure fair and unbiased results every time you spin the wheel, eliminating any potential bias in the selection process. "
+    ]
+  },
+  {
+    title: "How secure is PickerWheel? ",
+    subTitles: [
+      "PickerWheel takes security seriously and implements measures to protect user data and privacy. Your information is encrypted and stored securely, and we adhere to strict privacy policies to safeguard your personal information."
+    ]
   },
 ]
 
@@ -68,7 +120,7 @@ class Home extends React.Component {
                     <Component
                       index={i + 1}
                       title={item.title}
-                      subTitle={item.subTitle}
+                      subTitles={item.subTitles}
                     />
                   </Grid>
                 )
