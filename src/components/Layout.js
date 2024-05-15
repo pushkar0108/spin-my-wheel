@@ -49,9 +49,9 @@ export default function Layout({ children }) {
     <ColorModeContext.Provider value={colorMode}>
       <Head>
         <meta name="google-site-verification" content="0qeIngcvUH2pVGnfM-Z3nnw-VZ6lpnO7tOmtmCEbEoA" />
-        <meta name="description" content="Spinner Wheel" />
-        <meta name="author" content="Pushkar" />
-        <title>Spinner Wheel</title>
+        {/* <meta name="description" content="Spinner Wheel" /> */}
+        {/* <title>Spinner Wheel</title> */}
+        <meta name="author" content="Pushkar Goel" />
         <link rel="shortcut icon" type="image/x-icon" href="/images/wheel-icon.png" />
       </Head>
       <noscript>

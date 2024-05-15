@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -105,7 +106,10 @@ class Home extends React.Component {
   render() {
     return (
       <Layout>
-
+        <Head>
+          <meta name="description" content="Get all your questions answered about PickerWheel on our comprehensive FAQ page. Find the information that all you need quickly and easily. Explore now!" />
+          <title>Answers to Your Questions | PickerWheel</title>
+        </Head>
         <Grid container spacing={2} className="mt-16 mb-16">
           <Grid item xs={12}>
             <Typography variant="h4" component="div" align="center">
