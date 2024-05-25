@@ -57,7 +57,7 @@ const items = [
   {
     title: "What can I use PickerWheel.in for? ",
     subTitles: [
-      "PickerWheel can be used for a wide range of purposes, including -",
+      "PickerWheel can be used for a wide range of purposes, including:",
       "● Hosting game nights: Spin the wheel to choose games or determine winners.",
       "● Decision-making: Use the wheel to make fair and random decisions.",
       "● Giveaways and contests: Select winners randomly for giveaways or contests.",
@@ -91,13 +91,67 @@ const items = [
   {
     title: "Is there a way to prevent bias in the selection process?",
     subTitles: [
-      "Yes, PickerWheel uses advanced algorithms to ensure fair and unbiased results every time you spin the wheel, eliminating any potential bias in the selection process. "
+      "Yes, PickerWheel uses advanced algorithms to ensure fair and unbiased results every time you spin the wheel, eliminating any potential bias in the selection process."
     ]
   },
   {
     title: "How secure is PickerWheel? ",
     subTitles: [
       "PickerWheel takes security seriously and implements measures to protect user data and privacy. Your information is encrypted and stored securely, and we adhere to strict privacy policies to safeguard your personal information."
+    ]
+  },
+  {
+    title: "Can someone cheat the wheel?",
+    subTitles: [
+      "No, PickerWheel.in is designed to ensure fair and random outcomes. The wheel uses advanced algorithms to provide unbiased results, making it nearly impossible to manipulate or cheat."
+    ]
+  },
+  {
+    title: "When to use Virtual Picker Wheel?",
+    subTitles: [
+      "Use the Virtual Picker Wheel whenever you need to make a random selection. It’s perfect for decision-making, classroom activities, giveaways, party games, or any situation where you need an unbiased choice."
+    ]
+  },
+  {
+    title: "Can I customize the appearance of the wheel?",
+    subTitles: [
+      "Yes, you can fully customize the appearance of the wheel. Choose from a variety of colors, themes, and sound effects to make the wheel uniquely yours. You can also add text and images to personalize it further."
+    ]
+  },
+  {
+    title: "Can I save or share the wheels I create?",
+    subTitles: [
+      "Yes, you can save your custom wheels for future use. Additionally, you can share your wheels with others via a unique URL or by embedding them on your website or blog."
+    ]
+  },
+  {
+    title: "What kind of themes and sounds can I choose for my wheel?",
+    subTitles: [
+      "PickerWheel offers a variety of themes and sound effects to enhance your spinning experience. You can choose from different color schemes, backgrounds, and sound effects to make the wheel more engaging and fun."
+    ]
+  },
+  {
+    title: "How accurate is the random selection process of PickerWheel?",
+    subTitles: [
+      "The random selection process of PickerWheel is highly accurate, using advanced algorithms to ensure each spin is completely random and fair, without any influence from previous spins."
+    ]
+  },
+  {
+    title: "Are there any age restrictions for using PickerWheel?",
+    subTitles: [
+      "PickerWheel is suitable for users of all ages. However, we recommend parental guidance for younger children to ensure they use the tool appropriately and safely."
+    ]
+  },
+  {
+    title: "Is there a way to retrieve past results from a spin?",
+    subTitles: [
+      "Currently, PickerWheel does not store past spin results. Each spin is independent, and the results are not saved unless you manually record them."
+    ]
+  },
+  {
+    title: "Is there a limit to the number of times I can spin the wheel?",
+    subTitles: [
+      "No, there is no limit to the number of times you can spin the wheel. You can use PickerWheel as often as you need for making decisions, playing games, or any other purpose."
     ]
   },
 ]

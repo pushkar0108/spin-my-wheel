@@ -49,10 +49,17 @@ export default function Layout({ children }) {
     <ColorModeContext.Provider value={colorMode}>
       <Head>
         <meta name="google-site-verification" content="0qeIngcvUH2pVGnfM-Z3nnw-VZ6lpnO7tOmtmCEbEoA" />
-        {/* <meta name="description" content="Spinner Wheel" /> */}
-        {/* <title>Spinner Wheel</title> */}
         <meta name="author" content="Pushkar Goel" />
         <link rel="shortcut icon" type="image/x-icon" href="/images/wheel-icon.png" />
+
+        {/* <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" /> */}
+
       </Head>
       <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T3QZ4R2X" height="0" width="0" style={{
