@@ -5,10 +5,7 @@ import Layout from '../components/Layout';
 import { TRUTH_DARE_DEFAULT_SEGMENTS } from '../config/constants';
 import { setSegments, setSelectedPalette } from "../redux/features/appSlice";
 import FullscreenWheel from '../components/FullscreenWheel';
-
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
+import TextContent from '../components/TextContent';
 
 const items = [
   {
@@ -36,7 +33,7 @@ const items = [
   {
     title: "Benefits of Playing Truth Wheel",
     subTitles: [
-      "Fun and Entertainment: It&#39;s a great way to entertain guests and make any gathering more enjoyable.",
+      "Fun and Entertainment: It's a great way to entertain guests and make any gathering more enjoyable.",
       "● Bonding: Helps to strengthen relationships by encouraging honesty and shared experiences.",
       "● Ice Breaker: Perfect for breaking the ice in new groups or settings.",
       "● Flexibility: Suitable for various age groups and settings, from family gatherings to parties with friends or even date nights.",
@@ -53,7 +50,7 @@ const items = [
     subTitles: [
       "Here are some popular Truth or Dare game questions and dares to get you started:",
       "Truths:",
-      "● What&#39;s your most embarrassing moment?",
+      "● What's your most embarrassing moment?",
       "● Have you ever lied to get out of trouble?",
       "● What is your biggest fear?",
       "● Who is your secret crush?",
@@ -74,29 +71,6 @@ const items = [
   },
 ]
 
-const Component = ({ title, subTitles }) => {
-  return (
-    <Box>
-      <Typography sx={{ mt: 2, mb: 1.5 }} variant="h5" component="div">
-        {title}
-      </Typography>
-      <ul>
-        {
-          subTitles.map(subTitle => {
-            return (
-              <li key={subTitle}>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                  {subTitle}
-                </Typography>
-              </li>
-            )
-          })
-        }
-      </ul>
-    </Box>
-  )
-}
-
 export default function Home() {
   const dispatch = useDispatch();
 
@@ -114,29 +88,10 @@ export default function Home() {
         <title>Truth Wheel: Spin for Random Truths | PickerWheel</title>
       </Head>
       <FullscreenWheel />
-
-      <Grid container spacing={2} className="mt-16 mb-16">
-        <Grid item xs={12}>
-          <Typography variant="h4" component="div" align="center">
-            About the Game
-          </Typography>
-        </Grid>
-        <Grid container item xs={12} justifyContent="space-evenly">
-          {
-            items.map((item, i) => {
-              return (
-                <Grid key={item.title} item xs={8}>
-                  <Component
-                    index={i + 1}
-                    title={item.title}
-                    subTitles={item.subTitles}
-                  />
-                </Grid>
-              )
-            })
-          }
-        </Grid>
-      </Grid>
+      <TextContent 
+        title={"About the Game"}
+        items={items}
+      />
     </Layout>
   );
 }
