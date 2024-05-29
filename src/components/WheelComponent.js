@@ -83,6 +83,7 @@ export function WheelComponent() {
     itemLabelColors: ['#fff', '#000'],
     rotationSpeedMax: 600,
     rotationResistance: -70,
+    isInteractive: false,
     lineWidth: 0,
     overlayImage: './img/example-2-overlay.svg',
     items: visibleSegments.map(segment => {
