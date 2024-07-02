@@ -8,6 +8,7 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import Switch from '@mui/material/Switch';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import { useTheme } from '@mui/material/styles';
 import RightPanel from "./RightPanel";
 import ResultPanel from "./ResultPanel";
 import Modal from './Modal';
@@ -19,6 +20,7 @@ import { toggleShowTable, toggleMuteWheel, setShowResultModal } from "../redux/f
 const FullscreenWheel = ({}) => {
   const dispatch = useDispatch();
   const handle = useFullScreenHandle();
+  const theme = useTheme();
   
   const { showConfetti, fullScreenCounter, muteWheel, isLoading, showResultModal } = useSelector((state) => state.app);
 
@@ -55,7 +57,10 @@ const FullscreenWheel = ({}) => {
         </ButtonGroup>
       </Box>
       <FullScreen handle={handle}>
-        <div id="fullscreen-container">
+        <div id="fullscreen-container" style={{ 
+          height: "100%",
+          background: theme.palette.mode === 'dark' ? '#121212' : 'white' 
+        }}>
           <Grid container justifyContent="space-around" alignItems="flex-start">
             <Grid item xs={12} md={5}>
               <WheelComponentWrapper isLoading={isLoading} />

@@ -1,4 +1,7 @@
 import sound1 from '../../public/sounds/1.mp3';
+import sound2 from '../../public/sounds/2.mp3';
+import sound3 from '../../public/sounds/3.mp3';
+import sound4 from '../../public/sounds/4.mp3';
 import winnerSound1 from '../../public/sounds/winner.mp3';
 
 export const PALETTES = [
@@ -64,9 +67,9 @@ export const RANDOM_DECISION_DEFAULT_SEGMENTS = [
 
 export const SPINNING_SOUNDS = [
   ['Sound 1', sound1],
-  ['Sound 2', sound1],
-  ['Sound 3', sound1],
-  ['Sound 4', sound1],
+  ['Sound 2', sound2],
+  ['Sound 3', sound3],
+  ['Sound 4', sound4],
 ];
 
 export const WINNING_SOUNDS = [
