@@ -21,6 +21,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import ShareIcon from '@mui/icons-material/Share';
 import FeedbackIcon from '@mui/icons-material/Feedback';
+import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
 import { useTheme } from '@mui/material/styles';
 import { ColorModeContext } from "../themeContext";
 import Image from 'next/image';
@@ -28,7 +29,7 @@ import { setShowConfigModal, setShowFeedbackModal, incrementFullScreenCounter, s
 
 const pages = [{
   title: 'Blog',
-  icon: <FeedbackIcon />,
+  icon: <SpeakerNotesIcon />,
   onClick: (dispatch, router) => {
     router.push(`/blog`);
   },
