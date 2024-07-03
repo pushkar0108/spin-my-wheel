@@ -39,7 +39,7 @@ export default function BlogPost({
                 {
                   texts.map((text, index) => {
                     return (
-                      <div>{text}</div>
+                      <div key={index}>{text}</div>
                     )
                   })
                 }
