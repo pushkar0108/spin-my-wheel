@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as NextLink from 'next/link';
 import { useDispatch } from "react-redux";
+import { useRouter } from 'next/router';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -26,6 +27,12 @@ import Image from 'next/image';
 import { setShowConfigModal, setShowFeedbackModal, incrementFullScreenCounter, showSnackBar } from "../redux/features/appSlice";
 
 const pages = [{
+  title: 'Blog',
+  icon: <FeedbackIcon />,
+  onClick: (dispatch, router) => {
+    router.push(`/blog`);
+  },
+}, {
   title: 'Feedback',
   icon: <FeedbackIcon />,
   onClick: (dispatch) => {
@@ -62,6 +69,7 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
   const dispatch = useDispatch();
+  const router = useRouter();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -78,7 +86,7 @@ function ResponsiveAppBar() {
 
   const handlePageClick = (page) => {
     setAnchorElNav(null);
-    page.onClick(dispatch);
+    page.onClick(dispatch, router);
   };
 
   const handleCloseUserMenu = () => {
