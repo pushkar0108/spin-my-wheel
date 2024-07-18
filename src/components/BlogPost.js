@@ -7,7 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 
 export default function BlogPost({
-  imageSrc, title, subTitle, content
+  date, imageSrc, title, subTitle, content
 }) {
 
   return (
@@ -16,7 +16,7 @@ export default function BlogPost({
       xs: 2
     }}}>
       <CardHeader
-        subheader="September 14, 2016"
+        subheader={date}
       />
       <CardMedia
         sx={{ height: 340 }}

@@ -1,11 +1,15 @@
 import React from "react";
 import Head from "next/head";
+import { useRouter } from 'next/router';
+
 import Layout from '../../components/Layout';
 import BlogPost from '../../components/BlogPost';
 import { BLOGS } from '../../config/constants';
 
 export default function Blog({ }) {
-    const content = BLOGS[0];
+    const router = useRouter()
+    const blog = BLOGS.find(blog => blog.title == router.query.title);
+    debugger
 
     return (
         <Layout>
@@ -15,10 +19,11 @@ export default function Blog({ }) {
             </Head>
 
             <BlogPost
-                imageSrc={content.imageSrc}
-                title={content.title}
-                subTitle={content.subTitles}
-                content={content.content}
+                date={blog.date}
+                imageSrc={blog.imageSrc}
+                title={blog.title}
+                subTitle={blog.subTitles}
+                content={blog.content}
             />
 
         </Layout>

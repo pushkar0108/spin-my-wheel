@@ -81,6 +81,7 @@ export const WINNING_SOUNDS = [
 
 export const BLOGS = [
   {
+    "date": "June 16, 2024",
     "title": "Spin, Reveal, and Challenge: The Ultimate Truth and Dare Experience",
     "subTitles": [
       "The Truth or Dare game has been a classic party staple for generations, known for bringing excitement, laughter, and even a little bit of embarrassment. With PickerWheel.in, you can now enjoy a Truth or Dare online game with family and friends."
@@ -201,44 +202,95 @@ export const BLOGS = [
     ]
   },
   {
-    "title": "What Do We Do in This Game?",
+    "date": "July 16, 2024",
+    "title": "Virtual Reality: Beyond Gaming: Exploring its Diverse Applications",
     "subTitles": [
-      "In the Truth or Dare game, players take turns spinning the wheel to receive a challenge. The wheel will randomly land on either &quot;Truth&quot; or &quot;Dare.&quot; If it lands on &quot;Truth,&quot; the player must answer a question honestly."
+      "Virtual Reality (VR) technology has transcended its origins in gaming to revolutionize various industries and everyday experiences. While gaming remains a significant part of its appeal, VR's potential extends far beyond entertainment, impacting sectors such as education, healthcare, architecture, and more."
     ],
-    "imageSrc": "/images/blog2.jpeg",
-  },
-  {
-    "title": "How to Play",
-    "subTitles": [
-      "1. Gather Participants: Get your family, friends, or partner ready for some fun.",
-      "2. Spin the Wheel: Use the Truth or Dare online spin to randomly select a truth or dare challenge."
-    ],
-    "imageSrc": "/images/blog1.jpeg",
-  },
-  {
-    "title": "Benefits of Playing Truth Wheel",
-    "subTitles": [
-      "Fun and Entertainment: It's a great way to entertain guests and make any gathering more enjoyable.",
-      "● Bonding: Helps to strengthen relationships by encouraging honesty and shared experiences.",
-    ],
-    "imageSrc": "/images/blog1.jpeg",
-  },
-  {
-    "title": "By the Coming of Digital World, It Shifted Online from Offline",
-    "subTitles": [
-      "The traditional Truth or Dare game has seamlessly transitioned into the digital age. With the advent of online platforms, you can now play Truth or Dare games online free, making it accessible anytime and anywhere.",
-    ],
-    "imageSrc": "/images/blog2.jpeg",
-  },
-  {
-    "title": "What Are the Popular Truths and Dares",
-    "subTitles": [
-      "Here are some popular Truth or Dare game questions and dares to get you started:",
-      "Truths:",
-      "● What's your most embarrassing moment?",
-      "● Have you ever lied to get out of trouble?",
-      "● What is your biggest fear?",
-    ],
-    "imageSrc": "/images/blog1.jpeg",
+    "imageSrc": "/images/blog3.jpeg",
+    "content": [
+      {
+        "texts": [
+          "Are you looking for a fun and exciting way to spice up your gatherings? Look no further than the classic game of Truth and Dare! Whether you're at a party, a sleepover, or just hanging out with friends, this game is sure to bring laughter, surprises, and unforgettable memories. Let's dive into how to play and some great tips to make your Truth and Dare game a hit."
+        ]
+      },
+      {
+        "variant": "h5",
+        "texts": [
+          "Education Enhanced: Immersive Learning Experiences"
+        ]
+      },
+      {
+        "texts": [
+          "In education, VR offers unparalleled opportunities for immersive learning. Students can explore historical landmarks, dissect virtual organisms, or engage in simulated scientific experiments—all within a safe and controlled environment. Keywords: VR education, immersive learning, virtual field trips."
+        ]
+      },
+      {
+        "variant": "h5",
+        "texts": [
+          "Healthcare Advancements: Transforming Patient Care"
+        ]
+      },
+      {
+        "texts": [
+          "In healthcare, VR is transforming patient care and medical training. Surgeons use VR simulations to practice complex procedures, enhancing precision and reducing risks. VR is also employed in therapy to treat PTSD, phobias, and chronic pain, providing patients with therapeutic relief. Keywords: VR healthcare applications, medical training simulations, VR therapy."
+        ]
+      },
+      {
+        "variant": "h5",
+        "texts": [
+          "Architectural Visualization: Designing the Future"
+        ]
+      },
+      {
+        "texts": [
+          "Architects and real estate developers leverage VR to visualize designs and showcase properties to clients. Virtual tours allow potential buyers to explore spaces remotely, customize interiors, and experience architectural concepts in a realistic manner. Keywords: VR in architecture, virtual property tours, architectural visualization."
+        ]
+      },
+      {
+        "variant": "h5",
+        "texts": [
+          "Remote Collaboration: Redefining Workspaces"
+        ]
+      },
+      {
+        "texts": [
+          "The integration of VR in remote work environments facilitates virtual meetings and collaborative sessions. Teams can interact in virtual spaces that simulate physical presence, fostering creativity and enhancing productivity. Keywords: VR remote collaboration, virtual meetings, remote work solutions."
+        ]
+      },
+      {
+        "variant": "h5",
+        "texts": [
+          "Cultural Exploration: Preserving Heritage"
+        ]
+      },
+      {
+        "texts": [
+          "VR contributes to cultural preservation by offering virtual tours of historical sites and museums worldwide. This technology not only preserves cultural heritage but also makes it accessible to a global audience, promoting education and appreciation of diverse cultures. Keywords: VR cultural heritage, virtual museum tours, cultural preservation."
+        ]
+      },
+      {
+        "variant": "h5",
+        "texts": [
+          "Future Outlook: Innovation and Beyond"
+        ]
+      },
+      {
+        "texts": [
+          "Looking forward, VR continues to evolve with advancements in augmented reality (AR) and mixed reality (MR), promising even more immersive and interactive experiences. Keywords: future of VR, AR and VR integration, VR trends."
+        ]
+      },
+      {
+        "variant": "h5",
+        "texts": [
+          "Conclusion"
+        ]
+      },
+      {
+        "texts": [
+          "Virtual Reality has transitioned from being primarily associated with gaming to becoming a transformative technology with widespread applications across industries. Whether enhancing education, revolutionizing healthcare, redefining architectural design, enabling remote collaboration, preserving cultural heritage, or driving future innovations, VR continues to redefine how we interact with the world. As VR technology advances, its impact on various sectors and everyday experiences will only grow, paving the way for a future where virtual and physical realities seamlessly coexist. Embracing VR means embracing a world of endless possibilities, where imagination meets innovation to create immersive and enriching experiences for everyone."
+        ]
+      }
+    ]
   },
 ]

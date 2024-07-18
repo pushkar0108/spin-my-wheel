@@ -9,14 +9,14 @@ import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/router';
 
 export default function MediaCard({
-  imageSrc, title, subTitle,
+  date="September 14, 2016", imageSrc, title, subTitle,
 }) {
   const router = useRouter();
 
   return (
     <Card sx={{m:2}}>
       <CardHeader
-        subheader="September 14, 2016"
+        subheader={date}
       />
       <CardMedia
         sx={{ height: 140 }}
