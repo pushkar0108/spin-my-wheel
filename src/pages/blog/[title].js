@@ -16,8 +16,8 @@ export default function Blog({ }) {
     return (
         <Layout>
             <Head>
-                <meta name="description" content="Spin the truth wheel to reveal random truth questions! Use our custom spin wheel generator for fun truth or dare games and icebreakers. Try it now!" />
-                <title>Truth Wheel: Spin for Random Truths | PickerWheel</title>
+                <meta name="description" content={blog?.subTitles} />
+                <title>{blog?.title}</title>
             </Head>
 
             {
