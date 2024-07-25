@@ -26,7 +26,9 @@ export default function SoundSelector({
 
   useEffect(() => {
     return () => {
+      console.log("stop fired");
       stop();
+      setIsPlaying(false);
     };
   }, []); 
 
