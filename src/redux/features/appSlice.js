@@ -25,7 +25,7 @@ const appSlice = createSlice({
     muteWheel: false,
     results: [],
     spinningSpeed: 300,
-    spinningSoundIndex: 0,
+    spinningSoundIndex: 1,
     spinningSoundVolume: 0.3,
     winningSoundIndex: 0,
     winningSoundVolume: 0.6,
