@@ -49,6 +49,24 @@ class MyApp extends App {
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9831926548985981"
           strategy="beforeInteractive"
         />
+        <Script
+          key={"adBlocker"}
+          id="adBlocker"
+          src="https://fundingchoicesmessages.google.com/i/pub-9831926548985981?ers=1"
+          strategy="beforeInteractive"
+          nonce="2iKO0GIkt-TaKrM69irEgw"
+        />
+        <Script
+          key={"adBlockerCode"}
+          id="adBlockerCode"
+          strategy="afterInteractive"
+          nonce="2iKO0GIkt-TaKrM69irEgw"
+          dangerouslySetInnerHTML={{
+            __html: `
+            (function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();
+          `,
+          }}
+        />
         <ReduxProvider>
           <Component {...pageProps} key={router.route}/>
         </ReduxProvider>
