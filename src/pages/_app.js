@@ -67,6 +67,13 @@ class MyApp extends App {
           `,
           }}
         />
+        <Script
+          key={"adsense123"}
+          id="adsense123"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9831926548985981"
+          strategy="beforeInteractive"
+          crossOrigin="anonymous"
+        />
         <ReduxProvider>
           <Component {...pageProps} key={router.route}/>
         </ReduxProvider>
