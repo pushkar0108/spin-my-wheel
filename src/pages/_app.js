@@ -1,5 +1,6 @@
 import App from 'next/app';
 import Script from 'next/script';
+import { ClerkProvider } from '@clerk/nextjs';
 
 import "../app/globals.css";
 import ReduxProvider from '../redux/provider';
@@ -74,9 +75,12 @@ class MyApp extends App {
           strategy="beforeInteractive"
           crossOrigin="anonymous"
         />
-        <ReduxProvider>
-          <Component {...pageProps} key={router.route}/>
-        </ReduxProvider>
+        <ClerkProvider>
+          <ReduxProvider>
+            <Component {...pageProps} key={router.route}/>
+          </ReduxProvider>
+        </ClerkProvider>
+        
       </>
     )
   }
